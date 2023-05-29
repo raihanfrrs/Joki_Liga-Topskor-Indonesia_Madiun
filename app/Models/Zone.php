@@ -17,4 +17,14 @@ class Zone extends Model
     {
         return $this->hasMany(DetailZone::class);
     }
+
+    public function club()
+    {
+        return $this->hasMany(Club::class);
+    }
+
+    public function player()
+    {
+        return $this->hasMany(Player::class);
+    }
 }

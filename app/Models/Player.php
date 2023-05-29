@@ -12,5 +12,19 @@ class Player extends Model
     protected $guarded = [
         'id'
     ];
-    
+
+    public function club()
+    {
+        return $this->belongsTo(Club::class);
+    }
+
+    public function zone()
+    {
+        return $this->belongsTo(Zone::class);
+    }
+
+    public function age_group()
+    {
+        return $this->belongsTo(AgeGroup::class);
+    }
 }

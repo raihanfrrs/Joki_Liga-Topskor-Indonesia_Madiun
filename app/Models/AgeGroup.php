@@ -17,4 +17,9 @@ class AgeGroup extends Model
     {
         return $this->hasMany(DetailZone::class);
     }
+
+    public function player()
+    {
+        return $this->hasMany(Player::class);
+    }
 }

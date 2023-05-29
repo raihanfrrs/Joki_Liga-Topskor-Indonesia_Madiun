@@ -12,4 +12,9 @@ class Official extends Model
     protected $guarded = [
         'id'
     ];
+
+    public function club()
+    {
+        return $this->belongsTo(Club::class);
+    }
 }

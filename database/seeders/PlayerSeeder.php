@@ -13,6 +13,13 @@ class PlayerSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $players = [
+            [
+                'club_id' => 1,
+                'zone_id' => 1,
+                'player_id' => 1,
+                ''
+            ]
+        ];
     }
 }
