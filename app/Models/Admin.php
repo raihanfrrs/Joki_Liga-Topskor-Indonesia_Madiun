@@ -10,6 +10,10 @@ class Admin extends Model
 {
     use HasFactory, Sluggable;
 
+    protected $guarded = [
+        'id'
+    ];
+
     public function sluggable(): array
     {
         return [

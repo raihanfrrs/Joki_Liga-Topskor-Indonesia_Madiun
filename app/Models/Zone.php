@@ -13,5 +13,8 @@ class Zone extends Model
         'id'
     ];
 
-    
+    public function detail_zone()
+    {
+        return $this->hasMany(DetailZone::class);
+    }
 }
