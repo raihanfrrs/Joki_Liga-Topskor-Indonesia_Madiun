@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use App\Models\Zone;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -16,6 +17,7 @@ class CreateClubsTable extends Migration
     {
         Schema::create('clubs', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(User::class);
             $table->foreignIdFor(Zone::class);
             $table->string('name');
             $table->string('slug');

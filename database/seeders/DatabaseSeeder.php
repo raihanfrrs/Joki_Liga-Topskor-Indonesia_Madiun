@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             ZoneSeeder::class,
             ClubSeeder::class,
+            PlayerSeeder::class,
+            OfficialSeeder::class,
         ]);
     }
 }

@@ -13,6 +13,11 @@ class Club extends Model
         'id'
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function zone()
     {
         return $this->belongsTo(Zone::class);

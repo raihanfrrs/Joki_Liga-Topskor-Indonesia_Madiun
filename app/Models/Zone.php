@@ -23,6 +23,11 @@ class Zone extends Model
         return $this->hasMany(Club::class);
     }
 
+    public function official()
+    {
+        return $this->hasMany(Official::class);
+    }
+
     public function player()
     {
         return $this->hasMany(Player::class);

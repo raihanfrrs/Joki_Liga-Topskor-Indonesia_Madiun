@@ -17,4 +17,9 @@ class Official extends Model
     {
         return $this->belongsTo(Club::class);
     }
+
+    public function zone()
+    {
+        return $this->belongsTo(Zone::class);
+    }
 }
