@@ -4,7 +4,11 @@
             <div class="collapse navbar-collapse justify-content-between">
                 <div class="header-left">
                     <div class="dashboard_bar">
-                        Dashboard 
+                        @if (count(Request::segments()) == 0)
+                            Dashboard
+                        @else 
+                            {{ isset($title) ? $title : Str::ucfirst(Request::segment(1)) }}
+                        @endif
                     </div>
                 </div>
                 <ul class="navbar-nav header-right">

@@ -9,7 +9,7 @@
         <span class="nav-text">Master Data</span>
     </a>
     <ul aria-expanded="false">
-        <li><a href="app-profile.html">Clubs</a></li>
+        <li><a href="/club">Clubs</a></li>
         <li><a href="post-details.html">Players</a></li>
         <li><a href="app-calender.html">Users</a></li>
     </ul>
