@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\MasterController;
 
 /*
@@ -36,6 +37,14 @@ Route::middleware('auth')->group(function () {
     Route::group(['middleware' => ['cekUserLogin:admin']], function(){
         Route::controller(MasterController::class)->group(function () {
             Route::get('club', 'club_index');
+
+            Route::get('player', 'player_index');
+        });
+
+        Route::controller(ManagementController::class)->group(function () {
+            Route::get('age', 'age_index');
+
+            Route::get('zone', 'zone_index');
         });
     });
 

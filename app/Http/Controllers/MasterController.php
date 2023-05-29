@@ -15,14 +15,7 @@ class MasterController extends Controller
 
     public function player_index()
     {
-        return view('admin.master.club.index')->with([
-            'title' => 'Master Data'
-        ]);
-    }
-
-    public function user_index()
-    {
-        return view('admin.master.club.index')->with([
+        return view('admin.master.player.index')->with([
             'title' => 'Master Data'
         ]);
     }

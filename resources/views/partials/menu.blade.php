@@ -10,8 +10,7 @@
     </a>
     <ul aria-expanded="false">
         <li><a href="/club">Clubs</a></li>
-        <li><a href="post-details.html">Players</a></li>
-        <li><a href="app-calender.html">Users</a></li>
+        <li><a href="/player">Players</a></li>
     </ul>
     </li>
     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
