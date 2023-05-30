@@ -18,7 +18,7 @@ class DetailZone extends Model
         return $this->belongsTo(Zone::class);
     }
 
-    public function agegroup()
+    public function age_group()
     {
         return $this->belongsTo(AgeGroup::class);
     }

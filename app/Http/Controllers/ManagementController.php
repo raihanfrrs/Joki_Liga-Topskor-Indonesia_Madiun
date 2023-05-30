@@ -21,7 +21,7 @@ class ManagementController extends Controller
     {
         return DataTables::of(AgeGroup::all())
         ->addColumn('amount', function ($model) {
-            return view('admin.management.age.amount', compact('model'))->render();
+            return view('admin.management.age.data-amount', compact('model'))->render();
         })
         ->addColumn('action', function ($model) {
             return view('admin.management.age.form-action', compact('model'))->render();
@@ -40,10 +40,13 @@ class ManagementController extends Controller
     public function dataZones()
     {
         return DataTables::of(Zone::all())
+        ->addColumn('group', function ($model) {
+            return view('admin.management.zone.data-zone-group', compact('model'))->render();
+        })
         ->addColumn('action', function ($model) {
             return view('admin.management.zone.form-action', compact('model'))->render();
         })
-        ->rawColumns(['action'])
+        ->rawColumns(['group', 'action'])
         ->make(true);
     }
 }

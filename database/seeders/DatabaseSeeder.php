@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             ZoneSeeder::class,
             AgeGroupSeeder::class,
+            DetailZoneSeeder::class,
             ClubSeeder::class,
             PlayerSeeder::class,
             OfficialSeeder::class,

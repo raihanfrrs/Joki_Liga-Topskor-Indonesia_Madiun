@@ -9,8 +9,8 @@
                     
                 </div>
                 <div>
-                    <h2 class="text-white invoice-num">2478</h2>
-                    <span class="text-white fs-18">Total Invoices</span>
+                    <h2 class="text-white invoice-num"><span id="totalClubs"></span></h2>
+                    <span class="text-white fs-18">Total Clubs</span>
                 </div>
             </div>
         </div>
@@ -26,8 +26,8 @@
                     
                 </div>
                 <div>
-                    <h2 class="text-white invoice-num">983</h2>
-                    <span class="text-white fs-18">Paid Invoices</span>
+                    <h2 class="text-white invoice-num"><span id="totalPlayers"></span></h2>
+                    <span class="text-white fs-18">Total Players</span>
                 </div>
             </div>
         </div>
@@ -43,8 +43,8 @@
                     
                 </div>
                 <div>
-                    <h2 class="text-white invoice-num">1256</h2>
-                    <span class="text-white fs-18">Unpaid Invoices</span>
+                    <h2 class="text-white invoice-num"><span id="totalAges"></span></h2>
+                    <span class="text-white fs-18">Total Age Groups</span>
                 </div>
             </div>
         </div>
@@ -59,8 +59,8 @@
                 
                 </div>
                 <div>
-                    <h2 class="text-white invoice-num">652</h2>
-                    <span class="text-white fs-18">Total Invoices Sent</span>
+                    <h2 class="text-white invoice-num"><span id="totalZones"></span></h2>
+                    <span class="text-white fs-18">Total Zones</span>
                 </div>
             </div>
         </div>
