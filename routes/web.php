@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LayoutController;
@@ -35,6 +36,13 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::group(['middleware' => ['cekUserLogin:admin']], function(){
+        Route::controller(DashboardController::class)->group(function () {
+            Route::get('dashboard/admin/totalClubs', 'totalClubs');
+            Route::get('dashboard/admin/totalPlayers', 'totalPlayers');
+            Route::get('dashboard/admin/totalAges', 'totalAges');
+            Route::get('dashboard/admin/totalZones', 'totalZones');
+        });
+
         Route::controller(MasterController::class)->group(function () {
             Route::get('club', 'club_index');
             Route::get('/dataClubs', [MasterController::class, 'dataClubs'])->name('dataClubs');
@@ -45,9 +53,15 @@ Route::middleware('auth')->group(function () {
 
         Route::controller(ManagementController::class)->group(function () {
             Route::get('age', 'age_index');
+            Route::get('age/add', 'age_add');
+            Route::post('age', 'age_store');
+            Route::get('age/{age}/edit', 'age_edit');
+            Route::put('age/{age}', 'age_update');
             Route::get('/dataAgeGroups', [ManagementController::class, 'dataAgeGroups'])->name('dataAgeGroups');
 
             Route::get('zone', 'zone_index');
+            Route::get('zone/add', 'zone_add');
+            Route::post('zone', 'zone_store');
             Route::get('/dataZones', [ManagementController::class, 'dataZones'])->name('dataZones');
         });
     });

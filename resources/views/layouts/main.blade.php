@@ -36,9 +36,13 @@
 	<!-- MAIN CSS -->
     <link rel="stylesheet" href="{{ asset('/') }}css/style.css">
 	
+    <!-- VENDOR SCRIPT -->
+    <script src="{{ asset('/') }}vendor/sweetalert2/dist/sweetalert2.min.js"></script>
 </head>
 
 <body @guest class="vh-100" @endguest>
+    @include('partials.flasher')
+
     @auth
     <div id="main-wrapper">
         @include('partials.logo')
@@ -64,13 +68,18 @@
     @endauth
 
     <!-- VENDOR SCRIPTS -->
-    <script src="{{ asset('/') }}vendor/sweetalert2/dist/sweetalert2.min.js"></script>
     @auth
     <script src="{{ asset('/') }}vendor/global/global.min.js"></script>
 	<script src="{{ asset('/') }}vendor/datatables/js/jquery.dataTables.min.js"></script>
 	<script src="{{ asset('/') }}js/plugins-init/datatables.init.js"></script>
     <script src="{{ asset('/') }}vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
     <script src="{{ asset('/') }}js/datatables.js"></script>
+
+        @if (auth()->user()->level === 'admin')
+        <script src="{{ asset('/') }}js/dashboard/admin.js"></script>
+        @elseif (auth()->user()->level === 'user')
+        <script src="{{ asset('/') }}js/dashboard/user.js"></script>
+        @endif
     @endauth
 
     <!-- MAIN SCRIPTS -->
