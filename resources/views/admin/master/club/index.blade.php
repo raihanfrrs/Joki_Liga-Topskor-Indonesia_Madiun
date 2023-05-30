@@ -1,5 +1,30 @@
 @extends('layouts.main')
 
 @section('section')
-    test
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">All Data of Club</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="dataClubs" class="display" style="min-width: 845px">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Club</th>
+                                <th>Address</th>
+                                <th>Phone</th>
+                                <th>Manager</th>
+                                <th>Zone</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

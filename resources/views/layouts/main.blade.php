@@ -30,6 +30,7 @@
     @auth
     <link rel="stylesheet" href="{{ asset('/') }}vendor/jquery-nice-select/css/nice-select.css">
 	<link rel="stylesheet" href="{{ asset('/') }}vendor/nouislider/nouislider.min.css">
+	<link rel="stylesheet" href="{{ asset('/') }}vendor/datatables/css/jquery.dataTables.min.css">
     @endauth
 
 	<!-- MAIN CSS -->
@@ -48,6 +49,10 @@
 
         <div class="content-body">
             <div class="container-fluid">
+                @if (count(Request::segments()) != 0)
+                    @include('partials.breadcrumb-title')
+                @endif
+
                 @yield('section')
             </div>
         </div>
@@ -62,7 +67,10 @@
     <script src="{{ asset('/') }}vendor/sweetalert2/dist/sweetalert2.min.js"></script>
     @auth
     <script src="{{ asset('/') }}vendor/global/global.min.js"></script>
-	<script src="{{ asset('/') }}vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+	<script src="{{ asset('/') }}vendor/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="{{ asset('/') }}js/plugins-init/datatables.init.js"></script>
+    <script src="{{ asset('/') }}vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+    <script src="{{ asset('/') }}js/datatables.js"></script>
     @endauth
 
     <!-- MAIN SCRIPTS -->

@@ -18,7 +18,7 @@ class CreateClubsTable extends Migration
         Schema::create('clubs', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Zone::class);
+            $table->foreignIdFor(Zone::class)->nullable();
             $table->string('name');
             $table->string('slug');
             $table->string('address');

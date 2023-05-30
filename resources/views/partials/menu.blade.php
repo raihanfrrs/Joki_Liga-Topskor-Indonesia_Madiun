@@ -18,8 +18,8 @@
         <span class="nav-text">Management</span>
     </a>
     <ul aria-expanded="false">
-        <li><a href="app-profile.html">Age Group</a></li>
-        <li><a href="post-details.html">Zone</a></li>
+        <li><a href="/age">Age Group</a></li>
+        <li><a href="/zone">Zone</a></li>
     </ul>
     </li>
 

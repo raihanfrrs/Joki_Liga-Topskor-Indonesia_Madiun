@@ -3,10 +3,22 @@
         <ul class="metismenu" id="menu">
             <li class="dropdown header-profile">
                 <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
-                    <img src="images/profile/pic1.jpg" width="20" alt="">
+                    @if (auth()->user()->level === 'admin')
+                        @if (auth()->user()->admin->image)
+                            <img src="{{ asset('storage/'. auth()->user()->admin->image) }}" width="20" alt="profile image">
+                        @else
+                            <img src="{{ asset('/') }}images/profile/profile-2.png" width="20" alt="profile image">
+                        @endif
+                    @elseif (auth()->user()->level === 'user')
+                        @if (auth()->user()->club->logo)
+                            <img src="{{ asset('storage/'. auth()->user()->club->logo) }}" width="20" alt="profile image">
+                        @else
+                            <img src="{{ asset('/') }}images/profile/profile-2.png" width="20" alt="profile image">
+                        @endif
+                    @endif
                     <div class="header-info ms-3">
-                        <span class="font-w600 ">Hi, <b>{{ auth()->user()->level === 'admin' ? fword(auth()->user()->admin->name) : fword(auth()->user()->club->name) }}</b></span>
-                        <small class="text-end font-w400">{{ auth()->user()->level === 'admin' ? auth()->user()->admin->email : auth()->user()->club->email }}</small>
+                        <span class="font-w600 text-capitalize">Hi, <b>{{ auth()->user()->level }}</b></span>
+                        <small class="text-end font-w400 text-capitalize">{{ auth()->user()->level === 'admin' ? auth()->user()->admin->name : auth()->user()->club->name }}</small>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">

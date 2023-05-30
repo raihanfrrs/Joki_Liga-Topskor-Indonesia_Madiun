@@ -26,6 +26,7 @@ class PlayerSeeder extends Seeder
                 'nik' => '2700605146786176',
                 'nisn' => '20013239223',
                 'phone' => '0817646483',
+                'address' => 'Jl. Kapasari No.4, Kapasari, Kec. Genteng, Surabaya, Jawa Timur 60273',
                 'position' => 'Striker'
             ],
             [
@@ -39,6 +40,7 @@ class PlayerSeeder extends Seeder
                 'nik' => '3181428606544271',
                 'nisn' => '200123231',
                 'phone' => '0817233443',
+                'address' => 'Jl. Pandan No.5, Ketabang, Kec. Genteng, Surabaya, Jawa Timur 60272',
                 'position' => 'Goalkeeper'
             ]
         ];

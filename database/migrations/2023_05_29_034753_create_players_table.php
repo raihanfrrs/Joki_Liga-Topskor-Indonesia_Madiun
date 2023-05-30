@@ -28,6 +28,7 @@ class CreatePlayersTable extends Migration
             $table->string('nik');
             $table->string('nisn');
             $table->string('phone');
+            $table->string('address');
             $table->string('position');
             $table->string('photo')->nullable();
             $table->string('akte')->nullable();

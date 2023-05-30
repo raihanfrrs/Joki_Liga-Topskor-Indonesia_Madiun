@@ -37,14 +37,18 @@ Route::middleware('auth')->group(function () {
     Route::group(['middleware' => ['cekUserLogin:admin']], function(){
         Route::controller(MasterController::class)->group(function () {
             Route::get('club', 'club_index');
+            Route::get('/dataClubs', [MasterController::class, 'dataClubs'])->name('dataClubs');
 
             Route::get('player', 'player_index');
+            Route::get('/dataPlayers', [MasterController::class, 'dataPlayers'])->name('dataPlayers');
         });
 
         Route::controller(ManagementController::class)->group(function () {
             Route::get('age', 'age_index');
+            Route::get('/dataAgeGroups', [ManagementController::class, 'dataAgeGroups'])->name('dataAgeGroups');
 
             Route::get('zone', 'zone_index');
+            Route::get('/dataZones', [ManagementController::class, 'dataZones'])->name('dataZones');
         });
     });
 
