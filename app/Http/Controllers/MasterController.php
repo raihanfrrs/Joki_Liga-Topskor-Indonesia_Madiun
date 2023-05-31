@@ -36,6 +36,16 @@ class MasterController extends Controller
         ]);
     }
 
+    public function player_edit(Player $player)
+    {
+        return view('admin.master.player.edit-player')->with([
+            'title' => 'Master Data',
+            'subtitle' => 'Player',
+            'player' => $player,
+            'clubs' => Club::all()
+        ]);
+    }
+
     public function dataPlayers()
     {
         return DataTables::of(Player::all())

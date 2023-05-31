@@ -66,7 +66,36 @@ class ManagementController extends Controller
             'age' => 'required|min:2|max:255|unique:age_groups'
         ]);
 
-        
+        $agegroup = AgeGroup::whereId($age->id)->update($validateData);
+
+        if ($agegroup) {
+            return redirect('age')->with([
+                'case' => 'default',
+                'position' => 'center',
+                'type' => 'success',
+                'message' => 'Update Success!'
+            ]);
+        } else {
+            return redirect('age')->with([
+                'case' => 'default',
+                'position' => 'center',
+                'type' => 'error',
+                'message' => 'Update Failed!'
+            ]);
+        }
+    }
+    public function age_destroy(AgeGroup $age)
+    {
+        if ($age->deleted_at == null) {
+            $age->delete();
+        }
+
+        return redirect('age')->with([
+            'case' => 'default',
+            'position' => 'center',
+            'type' => 'success',
+            'message' => 'Move To Trash Success!'
+        ]);
     }
 
     public function dataAgeGroups()
@@ -128,6 +157,60 @@ class ManagementController extends Controller
                 'message' => 'Adding Failed!'
             ]);
         }
+    }
+
+    public function zone_edit(Zone $zone)
+    {
+        return view('admin.management.zone.edit-zone')->with([
+            'title' => 'Management',
+            'subtitle' => 'Age Group',
+            'zone' => $zone,
+            'ages' => AgeGroup::all()
+        ]);
+    }
+
+    public function zone_update(Request $request, Zone $zone)
+    {
+
+        if ($request->zone != $zone->zone) {
+            $rules['zone'] = 'required|min:2|max:255|unique:zones';
+
+            $validateData = $request->validate($rules);
+
+            Zone::whereId($zone->id)->update($validateData);
+        }
+
+        DetailZone::where('zone_id', $zone->id)->delete();
+
+        foreach ($request->age as $item) {
+            $data['zone_id'] = $zone->id;
+            $data['age_group_id'] = $item;
+            DetailZone::create($data);
+        }
+
+        return redirect('zone')->with([
+            'case' => 'default',
+            'position' => 'center',
+            'type' => 'success',
+            'message' => 'Update Success!'
+        ]);
+        
+    }
+
+    public function zone_destroy(Zone $zone)
+    {
+        if ($zone->deleted_at == null) {
+            $zone->delete();
+
+            DetailZone::where('zone_id', $zone->id)->delete();
+        } 
+
+        return redirect('zone')->with([
+            'case' => 'default',
+            'position' => 'center',
+            'type' => 'success',
+            'message' => 'Move To Trash Success!'
+        ]);
     }
 
     public function dataZones()

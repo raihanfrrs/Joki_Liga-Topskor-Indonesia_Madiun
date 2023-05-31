@@ -16,6 +16,7 @@ class CreateAgeGroupsTable extends Migration
         Schema::create('age_groups', function (Blueprint $table) {
             $table->id();
             $table->string('age')->unique();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

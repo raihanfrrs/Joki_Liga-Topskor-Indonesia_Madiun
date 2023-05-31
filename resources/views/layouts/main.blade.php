@@ -76,7 +76,7 @@
     <script src="{{ asset('/') }}js/datatables.js"></script>
 
         @if (auth()->user()->level === 'admin')
-        <script src="{{ asset('/') }}js/dashboard/admin.js"></script>
+        <script src="{{ asset('/') }}js/admin.js"></script>
         @elseif (auth()->user()->level === 'user')
         <script src="{{ asset('/') }}js/dashboard/user.js"></script>
         @endif
@@ -85,5 +85,6 @@
     <!-- MAIN SCRIPTS -->
     <script src="{{ asset('/') }}js/custom.min.js"></script>
 	<script src="{{ asset('/') }}js/dlabnav-init.js"></script>
+	<script src="{{ asset('/') }}js/pre-image.js"></script>
 </body>
 </html>

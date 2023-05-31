@@ -29,11 +29,12 @@ class CreatePlayersTable extends Migration
             $table->string('nisn');
             $table->string('phone');
             $table->string('address');
-            $table->string('position');
+            $table->enum('position', ['kiper', 'anchor', 'flank', 'pivot']);
             $table->string('photo')->nullable();
             $table->string('akte')->nullable();
             $table->string('kk')->nullable();
             $table->string('photo_nisn')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -19,6 +19,7 @@ class CreateDetailZonesTable extends Migration
             $table->id();
             $table->foreignIdFor(Zone::class);
             $table->foreignIdFor(AgeGroup::class);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

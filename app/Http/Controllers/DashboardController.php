@@ -28,4 +28,11 @@ class DashboardController extends Controller
     {
         return Zone::count();
     }
+
+    public function totalTrashed()
+    {
+        $count = AgeGroup::onlyTrashed()->count() + Zone::onlyTrashed()->count();
+
+        return $count;
+    }
 }

@@ -1,1 +1,1 @@
-{{ $model->zone->zone }}
+{{ $model->zone()->withTrashed()->first()->zone }}

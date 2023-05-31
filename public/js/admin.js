@@ -36,4 +36,14 @@ $(document).ready(function () {
             $("#totalZones").html(data);
         }
     });
+
+    $.ajax({
+        type: "get",
+        url: "/dashboard/admin/totalTrashed",
+        success: function(data){
+            if(data != 0){
+                $("#totalTrashed").html(data);
+            }
+        }
+    });
 });
