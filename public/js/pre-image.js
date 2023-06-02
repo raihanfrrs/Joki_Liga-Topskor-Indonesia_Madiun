@@ -1,5 +1,5 @@
 function previewImage() {
-    const image = document.querySelector('#image');
+    const image = document.querySelector('#photo');
     const imgPreview = document.querySelector('.img-preview');
 
     const oFReader = new FileReader();

@@ -19,12 +19,12 @@ class CreateClubsTable extends Migration
             $table->id();
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Zone::class)->nullable();
-            $table->string('name');
-            $table->string('slug');
-            $table->string('address');
-            $table->string('phone');
+            $table->string('name')->nullable();
+            $table->string('slug')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
             $table->string('social_media')->nullable();
-            $table->string('club_manager');
+            $table->string('club_manager')->nullable();
             $table->string('logo')->nullable();
             $table->string('surat_rekomendasi')->nullable();
             $table->string('surat_pendirian')->nullable();

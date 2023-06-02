@@ -6,6 +6,8 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">All Data of Club</h4>
+                <a href="/club/add" class="btn btn-outline-primary btn-xs">Add Club <span class="btn-icon-end"><i class="fa fa-plus"></i></span>
+                </a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

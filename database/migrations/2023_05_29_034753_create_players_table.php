@@ -25,10 +25,10 @@ class CreatePlayersTable extends Migration
             $table->string('slug');
             $table->string('birthPlace');
             $table->date('birthDate');
-            $table->string('nik');
-            $table->string('nisn');
+            $table->string('nik')->unique();
+            $table->string('nisn')->unique();
             $table->string('phone');
-            $table->string('address');
+            $table->text('address');
             $table->enum('position', ['kiper', 'anchor', 'flank', 'pivot']);
             $table->string('photo')->nullable();
             $table->string('akte')->nullable();

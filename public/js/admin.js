@@ -46,4 +46,39 @@ $(document).ready(function () {
             }
         }
     });
+
+    const defaultSelectedOption = $('#club').find('option:selected');
+    const clubId = defaultSelectedOption.val();
+    const slugPlayer = $('#age-group-data').data('id');
+
+    $.ajax({
+        type: "get",
+        url: "/player/age-group-data",
+        data: {
+            "club": clubId,
+            "slug": slugPlayer
+        },
+        success: function(data){
+            $("#age-group-data").html(data);
+        }
+    });
+
+    // CUSTOM FUNCTION
+
+    $('#club').on('change', function() {
+        var selectedOption = $(this).find('option:selected');
+        var clubId = selectedOption.val();
+
+        $.ajax({
+            type: "get",
+            url: "/player/age-group-data",
+            data: {
+                "club": clubId,
+                "slug": slugPlayer
+            },
+            success: function(data){
+                $("#age-group-data").html(data);
+            }
+        });
+    });
 });

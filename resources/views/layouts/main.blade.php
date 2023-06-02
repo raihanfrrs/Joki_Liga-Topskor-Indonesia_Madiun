@@ -31,6 +31,10 @@
     <link rel="stylesheet" href="{{ asset('/') }}vendor/jquery-nice-select/css/nice-select.css">
 	<link rel="stylesheet" href="{{ asset('/') }}vendor/nouislider/nouislider.min.css">
 	<link rel="stylesheet" href="{{ asset('/') }}vendor/datatables/css/jquery.dataTables.min.css">
+
+    <!-- Pick date -->
+    <link rel="stylesheet" href="{{ asset('/') }}vendor/pickadate/themes/default.css">
+    <link rel="stylesheet" href="{{ asset('/') }}vendor/pickadate/themes/default.date.css">
     @endauth
 
 	<!-- MAIN CSS -->
@@ -73,6 +77,9 @@
 	<script src="{{ asset('/') }}vendor/datatables/js/jquery.dataTables.min.js"></script>
 	<script src="{{ asset('/') }}js/plugins-init/datatables.init.js"></script>
     <script src="{{ asset('/') }}vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+    <script src="{{ asset('/') }}vendor/pickadate/picker.js"></script>
+    <script src="{{ asset('/') }}vendor/pickadate/picker.date.js"></script>
+    <script src="{{ asset('/') }}js/plugins-init/pickadate-init.js"></script>
     <script src="{{ asset('/') }}js/datatables.js"></script>
 
         @if (auth()->user()->level === 'admin')

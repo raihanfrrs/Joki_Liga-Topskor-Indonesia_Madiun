@@ -51,10 +51,19 @@ Route::middleware('auth')->group(function () {
 
         Route::controller(MasterController::class)->group(function () {
             Route::get('club', 'club_index');
+            Route::get('club/add', 'club_add');
+            Route::post('club', 'club_store');
+            Route::get('club/{club}/edit', 'club_edit');
+            Route::put('club/{club}', 'club_update');
+            Route::delete('club/{club}', 'club_destroy');
             Route::get('/dataClubs', [MasterController::class, 'dataClubs'])->name('dataClubs');
 
             Route::get('player', 'player_index');
             Route::get('player/{player}/edit', 'player_edit');
+            Route::put('player/{player}', 'player_update');
+            Route::get('/player/age-group-data', 'player_read');
+            Route::get('player/{player}/show', 'player_show');
+            Route::delete('player/{player}', 'player_destroy');
             Route::get('/dataPlayers', [MasterController::class, 'dataPlayers'])->name('dataPlayers');
         });
 

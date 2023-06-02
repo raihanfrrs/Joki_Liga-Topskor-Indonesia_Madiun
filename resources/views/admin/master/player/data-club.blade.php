@@ -1,1 +1,1 @@
-{{ $model->club->name }}
+{{ $model->club()->withTrashed()->first()->name }}
