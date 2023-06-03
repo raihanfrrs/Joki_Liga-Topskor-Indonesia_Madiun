@@ -53,8 +53,8 @@ $(document).ready(function () {
         columns: [
             { data: 'id', name: 'id', class: 'text-muted text-center' },
             { data: 'zone', name: 'zone', class: 'text-muted text-center' },
-            { data: 'club', name: 'club', class: 'text-muted text-center' },
             { data: 'group', name: 'group', class: 'text-muted text-center' },
+            { data: 'club', name: 'club', class: 'text-muted text-center' },
             { data: 'action', name: 'action', class: 'text-center' }
         ]
     });

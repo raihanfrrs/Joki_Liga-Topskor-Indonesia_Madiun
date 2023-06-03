@@ -1,0 +1,1 @@
+{{ $model->club()->withTrashed()->count() }}

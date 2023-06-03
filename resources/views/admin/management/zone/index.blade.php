@@ -17,6 +17,7 @@
                                 <th>ID</th>
                                 <th>Zone</th>
                                 <th>Age Group</th>
+                                <th>Total of Clubs</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

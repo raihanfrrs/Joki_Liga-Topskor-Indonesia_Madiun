@@ -12,12 +12,14 @@
                     </div>
                 </div>
                 <ul class="navbar-nav header-right">
+                    @if (!request()->is('bin'))
                     <li class="nav-item notification_dropdown">
-                        <a class="nav-link" href="/bin">
+                        <a class="nav-link" href="/bin" id="trash">
                             <i class="flaticon-381-trash-1 text-secondary"></i>
                             <span class="badge light text-white bg-primary rounded-circle" id="totalTrashed"></span>
                         </a>
                     </li>
+                    @endif
                 </ul>
             </div>
         </nav>

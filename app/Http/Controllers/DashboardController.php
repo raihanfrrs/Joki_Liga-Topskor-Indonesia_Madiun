@@ -31,7 +31,7 @@ class DashboardController extends Controller
 
     public function totalTrashed()
     {
-        $count = AgeGroup::onlyTrashed()->count() + Zone::onlyTrashed()->count() + Club::onlyTrashed()->count() + Club::onlyTrashed()->count();
+        $count = AgeGroup::onlyTrashed()->count() + Zone::onlyTrashed()->count() + Club::onlyTrashed()->count() + Player::onlyTrashed()->count();
 
         return $count;
     }
