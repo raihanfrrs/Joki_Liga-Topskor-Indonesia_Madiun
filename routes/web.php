@@ -7,6 +7,7 @@ use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\MasterController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecycleController;
 
 /*
@@ -40,6 +41,11 @@ Route::middleware('auth')->group(function () {
         Route::get('bin', 'index');
     });
 
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('profile', 'index');
+        Route::put('profile/{user}', 'update');
+    });
+
     Route::group(['middleware' => ['cekUserLogin:admin']], function(){
         Route::controller(DashboardController::class)->group(function () {
             Route::get('dashboard/admin/totalClubs', 'totalClubs');
@@ -55,6 +61,7 @@ Route::middleware('auth')->group(function () {
             Route::post('club', 'club_store');
             Route::get('club/{club}/edit', 'club_edit');
             Route::put('club/{club}', 'club_update');
+            Route::get('club/{club}/details', 'club_show');
             Route::delete('club/{club}', 'club_destroy');
             Route::get('/dataClubs', [MasterController::class, 'dataClubs'])->name('dataClubs');
 
@@ -62,7 +69,7 @@ Route::middleware('auth')->group(function () {
             Route::get('player/{player}/edit', 'player_edit');
             Route::put('player/{player}', 'player_update');
             Route::get('/player/age-group-data', 'player_read');
-            Route::get('player/{player}/show', 'player_show');
+            Route::get('player/{player}/details', 'player_show');
             Route::delete('player/{player}', 'player_destroy');
             Route::get('/dataPlayers', [MasterController::class, 'dataPlayers'])->name('dataPlayers');
         });
@@ -73,6 +80,7 @@ Route::middleware('auth')->group(function () {
             Route::post('age', 'age_store');
             Route::get('age/{age}/edit', 'age_edit');
             Route::put('age/{age}', 'age_update');
+            Route::get('age/{age}/details', 'age_show');
             Route::delete('age/{age}', 'age_destroy');
             Route::get('/dataAgeGroups', [ManagementController::class, 'dataAgeGroups'])->name('dataAgeGroups');
 
@@ -81,6 +89,7 @@ Route::middleware('auth')->group(function () {
             Route::post('zone', 'zone_store');
             Route::get('zone/{zone}/edit', 'zone_edit');
             Route::put('zone/{zone}', 'zone_update');
+            Route::get('zone/{zone}/details', 'zone_show');
             Route::delete('zone/{zone}', 'zone_destroy');
             Route::get('/dataZones', [ManagementController::class, 'dataZones'])->name('dataZones');
         });

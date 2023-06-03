@@ -1,6 +1,6 @@
 <div class="row invoice-card-row">
     <div class="col-xl-3 col-xxl-3 col-sm-6">
-        <a href="#">
+        <a href="/club">
             <div class="card bg-warning invoice-card">
                 <div class="card-body d-flex">
                     <div class="icon me-3 text-white">
@@ -19,7 +19,7 @@
         </a>
     </div>
     <div class="col-xl-3 col-xxl-3 col-sm-6">
-        <a href="#">
+        <a href="/player">
             <div class="card bg-success invoice-card">
                 <div class="card-body d-flex">
                     <div class="icon me-3 text-white">
@@ -37,7 +37,7 @@
         </a>
     </div>
     <div class="col-xl-3 col-xxl-3 col-sm-6">
-        <a href="#">
+        <a href="/age">
             <div class="card bg-info invoice-card">
                 <div class="card-body d-flex">
                     <div class="icon me-3 text-white">
@@ -55,7 +55,7 @@
         </a>
     </div>
     <div class="col-xl-3 col-xxl-3 col-sm-6">
-        <a href="#">
+        <a href="/zone">
             <div class="card bg-secondary invoice-card">
                 <div class="card-body d-flex">
                     <div class="icon me-3 text-white">

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\AgeGroup;
+use App\Models\Club;
 use App\Models\DetailZone;
+use App\Models\Player;
 use App\Models\Zone;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -95,6 +97,15 @@ class ManagementController extends Controller
             'position' => 'center',
             'type' => 'success',
             'message' => 'Move To Trash Success!'
+        ]);
+    }
+
+    public function age_show(AgeGroup $age)
+    {
+        return view('admin.management.age.show-age')->with([
+            'title' => 'Management',
+            'subtitle' => 'Age Group',
+            'players' => Player::where('age_group_id', $age->id)->withTrashed()->get()
         ]);
     }
 
@@ -197,6 +208,15 @@ class ManagementController extends Controller
         
     }
 
+    public function zone_show(Zone $zone)
+    {
+        return view('admin.management.zone.show-zone')->with([
+            'title' => 'Management',
+            'subtitle' => 'Zone',
+            'clubs' => Club::where('zone_id', $zone->id)->withTrashed()->get()
+        ]);
+    }
+
     public function zone_destroy(Zone $zone)
     {
         if ($zone->deleted_at == null) {
@@ -218,6 +238,9 @@ class ManagementController extends Controller
         return DataTables::of(Zone::all())
         ->addColumn('group', function ($model) {
             return view('admin.management.zone.data-zone-group', compact('model'))->render();
+        })
+        ->addColumn('club', function ($model) {
+            return view('admin.management.zone.data-club', compact('model'))->render();
         })
         ->addColumn('action', function ($model) {
             return view('admin.management.zone.form-action', compact('model'))->render();

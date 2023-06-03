@@ -29,9 +29,6 @@
                                         <button type="submit" class="btn btn-primary btn-block">Login</button>
                                     </div>
                                 </form>
-                                <div class="text-center new-account mt-3">
-                                    <p>Don't have an account? <a class="text-primary" href="page-register.html">Register</a></p>
-                                </div>
                             </div>
                         </div>
                     </div>

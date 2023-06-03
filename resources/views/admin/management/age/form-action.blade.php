@@ -4,4 +4,4 @@
     @method('delete')
     <button type="submit" class="btn btn-danger shadow btn-xs sharp me-1"><i class="fa fa-trash"></i></button>
 </form>
-<a href="#" class="btn btn-secondary shadow btn-xs sharp"><i class="fa fa-eye"></i></a>
+<a href="/age/{{ $model->id }}/details" class="btn btn-secondary shadow btn-xs sharp"><i class="fa fa-eye"></i></a>

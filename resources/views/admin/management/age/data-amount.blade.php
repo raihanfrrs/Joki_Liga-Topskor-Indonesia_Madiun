@@ -1,1 +1,1 @@
-{{ $model->player->count() }}
+{{ $model->player()->withTrashed()->count() }}

@@ -117,6 +117,15 @@ class MasterController extends Controller
         }
     }
 
+    public function club_show(Club $club)
+    {
+        return view('admin.master.club.show-club')->with([
+            'title' => 'Data Master',
+            'subtitle' => 'Club',
+            'club' => $club
+        ]);
+    }
+
     public function club_destroy(Club $club)
     {
         if ($club->deleted_at == null) {
@@ -232,7 +241,11 @@ class MasterController extends Controller
 
     public function player_show(Player $player)
     {
-        dd($player);
+        return view('admin.master.player.show-player')->with([
+            'title' => 'Data Master',
+            'subtitle' => 'Player',
+            'player' => $player
+        ]);
     }
 
     public function player_destroy(Player $player)
