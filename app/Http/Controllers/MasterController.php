@@ -275,6 +275,9 @@ class MasterController extends Controller
         ->addColumn('club', function ($model) {
             return view('admin.master.player.data-club', compact('model'))->render();
         })
+        ->addColumn('age', function ($model) {
+            return view('admin.master.player.data-age', compact('model'))->render();
+        })
         ->addColumn('zone', function ($model) {
             return view('admin.master.player.data-zone', compact('model'))->render();
         })
@@ -284,7 +287,7 @@ class MasterController extends Controller
         ->addColumn('action', function ($model) {
             return view('admin.master.player.form-action', compact('model'))->render();
         })
-        ->rawColumns(['club', 'zone', 'validator','action'])
+        ->rawColumns(['club', 'age', 'zone', 'validator','action'])
         ->make(true);
     }
 }

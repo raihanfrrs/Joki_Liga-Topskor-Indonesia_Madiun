@@ -76,6 +76,12 @@ class RecycleController extends Controller
 
     public function age_destroy(Request $request)
     {
+        $age = AgeGroup::whereId($request->data)->onlyTrashed()->first();
+
+        Player::where('age_group_id', $age->id)->update(['age_group_id' => null]);
+
+        DetailZone::where('age_group_id', $age->id)->update(['age_group_id' => null]);
+
         AgeGroup::whereId($request->data)->onlyTrashed()->forceDelete();
 
         return true;
