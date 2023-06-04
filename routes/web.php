@@ -77,6 +77,7 @@ Route::middleware('auth')->group(function () {
             Route::get('player', 'player_index');
             Route::get('player/{player}/edit', 'player_edit');
             Route::put('player/{player}', 'player_update');
+            Route::get('player/status/update', 'player_status_update');
             Route::get('/player/age-group-data', 'player_read');
             Route::get('player/{player}/details', 'player_show');
             Route::delete('player/{player}', 'player_destroy');

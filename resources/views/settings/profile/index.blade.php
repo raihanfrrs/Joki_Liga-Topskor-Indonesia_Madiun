@@ -112,6 +112,11 @@
                                             @csrf
                                             @method('put')
                                             <div class="mb-3 col-md-6">
+                                                <label class="form-label">Name</label>
+                                                <input type="text" placeholder="Name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $profile->name) }}" name="name" required>
+                                                @error('name') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                            </div>
+                                            <div class="mb-3 col-md-6">
                                                 <label class="form-label">Email</label>
                                                 <input type="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $profile->email) }}" name="email" required>
                                                 @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
@@ -122,7 +127,14 @@
                                                 @error('phone') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                             </div>
                                             <div class="mb-3 col-md-6">
-                                                <label class="form-label">Password</label>
+                                                <label class="form-label">Username</label>
+                                                <input type="text" placeholder="Username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username', $profile->user->username) }}" name="username" required>
+                                                @error('username') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">Password
+                                                    <span class="text-danger">*Optional</span>
+                                                </label>
                                                 <input type="password" placeholder="Password" class="form-control @error('email') is-invalid @enderror" name="password">
                                                 @error('phone') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                             </div>

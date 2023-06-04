@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AgeGroup;
 use App\Models\Club;
+use App\Models\DetailZone;
 use App\Models\Player;
 use App\Models\Zone;
 use Illuminate\Http\Request;
@@ -57,6 +58,10 @@ class RecycleController extends Controller
 
     public function club_destroy(Request $request)
     {
+        $club = Club::where('slug', $request->data)->onlyTrashed()->first();
+
+        Player::where('club_id', $club->id)->update(['club_id' => null]);
+
         Club::where('slug', $request->data)->onlyTrashed()->forceDelete();
 
         return true;
@@ -78,6 +83,14 @@ class RecycleController extends Controller
 
     public function zone_destroy(Request $request)
     {
+        $zone = Zone::whereId($request->data)->onlyTrashed()->first();
+
+        Player::where('zone_id', $zone->id)->update(['zone_id' => null]);
+
+        DetailZone::where('zone_id', $zone->id)->delete();
+
+        Club::where('zone_id', $zone->id)->update(['zone_id' => null]);
+
         Zone::whereId($request->data)->onlyTrashed()->forceDelete();
 
         return true;

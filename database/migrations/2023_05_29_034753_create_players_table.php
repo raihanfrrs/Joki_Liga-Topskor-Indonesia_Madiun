@@ -18,9 +18,9 @@ class CreatePlayersTable extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Club::class);
-            $table->foreignIdFor(Zone::class);
-            $table->foreignIdFor(AgeGroup::class);
+            $table->foreignIdFor(Club::class)->nullable();
+            $table->foreignIdFor(Zone::class)->nullable();
+            $table->foreignIdFor(AgeGroup::class)->nullable();
             $table->string('name');
             $table->string('slug');
             $table->string('birthPlace');
@@ -30,6 +30,7 @@ class CreatePlayersTable extends Migration
             $table->string('phone');
             $table->text('address');
             $table->enum('position', ['kiper', 'anchor', 'flank', 'pivot']);
+            $table->enum('status', ['terima', 'proses', 'tolak']);
             $table->string('photo')->nullable();
             $table->string('akte')->nullable();
             $table->string('kk')->nullable();

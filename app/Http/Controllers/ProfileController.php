@@ -32,21 +32,29 @@ class ProfileController extends Controller
         if ($user->level === 'admin') {
             $rules = [
                 'email' => 'required|min:5|max:255|email:rfc,dns',
-                'phone' => 'required|numeric'
+                'phone' => 'required|numeric',
+                'name' => 'required|min:5|max:255',
             ];
 
+            if ($request->username != $user->username) {
+                $users = $request->validate([
+                    'username' => 'required|min:5|max:255'
+                ]);
+
+                User::whereId($user->id)->update($users);
+            }
+
             if ($request->password) {
-                $password['password'] = [Password::min(8)];
+                $users = $request->validate([
+                    'password' => [Password::min(8)]
+                ]);
+                
+                $users['password'] = bcrypt($request->password);
+
+                User::whereId($user->id)->update($users);
             }
 
             $validateData = $request->validate($rules);
-            $validatePassword = $request->validate($password);
-
-            if ($request->password) {
-                $validatePassword['password'] = bcrypt($request->password);
-
-                User::whereId($user->id)->update($validatePassword);
-            }
 
             Admin::where('user_id', $user->id)->update($validateData);
 

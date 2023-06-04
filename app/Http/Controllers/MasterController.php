@@ -229,6 +229,13 @@ class MasterController extends Controller
         }
     }
 
+    public function player_status_update(Request $request)
+    {
+        Player::where('slug', $request->player)->update(['status' => $request->status]);
+
+        return true;
+    }
+
     public function player_read(Request $request)
     {
         $club = Club::whereId($request->club)->first();
@@ -271,10 +278,13 @@ class MasterController extends Controller
         ->addColumn('zone', function ($model) {
             return view('admin.master.player.data-zone', compact('model'))->render();
         })
+        ->addColumn('validator', function ($model) {
+            return view('admin.master.player.data-validator', compact('model'))->render();
+        })
         ->addColumn('action', function ($model) {
             return view('admin.master.player.form-action', compact('model'))->render();
         })
-        ->rawColumns(['age', 'zone', 'action'])
+        ->rawColumns(['club', 'zone', 'validator','action'])
         ->make(true);
     }
 }

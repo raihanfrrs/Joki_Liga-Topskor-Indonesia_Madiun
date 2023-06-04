@@ -15,6 +15,7 @@
                                 <th>ID</th>
                                 <th>Player</th>
                                 <th>Club</th>
+                                <th>Age Group</th>
                                 <th>NIK</th>
                                 <th>NISN</th>
                                 <th>Phone</th>
@@ -23,6 +24,7 @@
                                 <th>Zone</th>
                                 <th>Address</th>
                                 <th>Position</th>
+                                <th>Validator</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

@@ -1,5 +1,5 @@
 @if ($model->zone)
     {{ $model->zone->zone }}
 @else
-    Haven't selected a zone yet
+    <span class="text-danger">Haven't selected a zone yet</span>
 @endif

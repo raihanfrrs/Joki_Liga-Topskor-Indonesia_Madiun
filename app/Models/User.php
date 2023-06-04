@@ -20,6 +20,12 @@ class User extends Authenticatable
         'id'
     ];
 
+    protected $fillable = [
+        'username',
+        'password',
+        'level'
+    ];
+
     public function admin()
     {
         return $this->hasOne(Admin::class);

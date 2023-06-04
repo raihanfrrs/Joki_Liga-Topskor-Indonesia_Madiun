@@ -11,22 +11,22 @@ class DashboardController extends Controller
 {
     public function totalClubs()
     {
-        return Club::count();
+        return Club::withTrashed()->count();
     }
 
     public function totalPlayers()
     {
-        return Player::count();
+        return Player::withTrashed()->count();
     }
 
     public function totalAges()
     {
-        return AgeGroup::count();
+        return AgeGroup::withTrashed()->count();
     }
 
     public function totalZones()
     {
-        return Zone::count();
+        return Zone::withTrashed()->count();
     }
 
     public function totalTrashed()

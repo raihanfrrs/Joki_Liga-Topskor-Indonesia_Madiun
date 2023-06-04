@@ -22,6 +22,7 @@ $(document).ready(function () {
             { data: 'id', name: 'id', class: 'text-muted text-center' },
             { data: 'name', name: 'name', class: 'text-muted text-capitalize' },
             { data: 'club', name: 'club', class: 'text-muted text-center' },
+            { data: 'age', name: 'age', class: 'text-muted text-center' },
             { data: 'nik', name: 'nik', class: 'text-muted text-center' },
             { data: 'nisn', name: 'nisn', class: 'text-muted text-center' },
             { data: 'phone', name: 'phone', class: 'text-muted text-center' },
@@ -30,6 +31,7 @@ $(document).ready(function () {
             { data: 'zone', name: 'zone', class: 'text-muted text-center' },
             { data: 'address', name: 'address', class: 'text-muted text-center' },
             { data: 'position', name: 'position', class: 'text-muted text-center' },
+            { data: 'validator', name: 'validator', class: 'text-muted text-center' },
             { data: 'action', name: 'action', class: 'text-center' }
         ]
     });

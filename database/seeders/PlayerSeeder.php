@@ -27,7 +27,8 @@ class PlayerSeeder extends Seeder
                 'nisn' => '20013239223',
                 'phone' => '0817646483',
                 'address' => 'Jl. Kapasari No.4, Kapasari, Kec. Genteng, Surabaya, Jawa Timur 60273',
-                'position' => 'kiper'
+                'position' => 'kiper',
+                'status' => 'terima'
             ],
             [
                 'club_id' => 2,
@@ -41,7 +42,8 @@ class PlayerSeeder extends Seeder
                 'nisn' => '200123231',
                 'phone' => '0817233443',
                 'address' => 'Jl. Pandan No.5, Ketabang, Kec. Genteng, Surabaya, Jawa Timur 60272',
-                'position' => 'pivot'
+                'position' => 'pivot',
+                'status' => 'proses'
             ]
         ];
 

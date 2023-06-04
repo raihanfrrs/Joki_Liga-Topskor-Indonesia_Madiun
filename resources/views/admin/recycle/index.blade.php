@@ -39,7 +39,7 @@
                                     <small class="d-block">Moved at {{ $club->deleted_at->diffForHumans() }}</small>
                                 </div>
                                 <div class="dropdown">
-                                    <button type="button" class="btn btn-info light sharp" data-bs-toggle="dropdown">
+                                    <button type="button" class="btn btn-danger light sharp" data-bs-toggle="dropdown">
                                         <svg width="18px" height="18px" viewbox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
@@ -124,7 +124,7 @@
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <button class="dropdown-item" id="restore" data-id="{{ $age->id }}" data-key="age">Restore</button>
-                                        <button class="dropdown-item" id="delete" data-id="{{ $club->slug }}" data-key="club">Delete</button>
+                                        <button class="dropdown-item" id="delete" data-id="{{ $age->id }}" data-key="age">Delete</button>
                                     </div>
                                 </div>
                             </div>
@@ -162,7 +162,7 @@
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <button class="dropdown-item" id="restore" data-id="{{ $zone->id }}" data-key="zone">Restore</button>
-                                        <a class="dropdown-item" href="#">Delete</a>
+                                        <button class="dropdown-item" id="delete" data-id="{{ $zone->id }}" data-key="zone">Delete</button>
                                     </div>
                                 </div>
                             </div>
