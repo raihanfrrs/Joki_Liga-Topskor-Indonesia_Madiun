@@ -31,6 +31,7 @@ class CreateClubsTable extends Migration
             $table->string('surat_kepengurusan')->nullable();
             $table->string('susunan_pemain')->nullable();
             $table->string('surat_perpindahan')->nullable();
+            $table->enum('status', ['active', 'non-active']);
             $table->softDeletes();
             $table->timestamps();
         });

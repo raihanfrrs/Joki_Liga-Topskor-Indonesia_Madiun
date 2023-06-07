@@ -11,6 +11,7 @@
     <ul aria-expanded="false">
         <li><a href="/club">Clubs</a></li>
         <li><a href="/player">Players</a></li>
+        <li><a href="/official">Officials</a></li>
     </ul>
     </li>
     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">

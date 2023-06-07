@@ -82,6 +82,10 @@ Route::middleware('auth')->group(function () {
             Route::get('player/{player}/details', 'player_show');
             Route::delete('player/{player}', 'player_destroy');
             Route::get('/dataPlayers', [MasterController::class, 'dataPlayers'])->name('dataPlayers');
+
+            Route::get('official', 'official_index');
+            Route::get('official/status/update', 'official_status_update');
+            Route::get('/dataOfficials', [MasterController::class, 'dataOfficials'])->name('dataOfficials');
         });
 
         Route::controller(ManagementController::class)->group(function () {

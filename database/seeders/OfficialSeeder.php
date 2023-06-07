@@ -25,7 +25,8 @@ class OfficialSeeder extends Seeder
                 'social_media' => 'https://www.instagram.com/pssi',
                 'birthDate' => '1976-05-02',
                 'phone' => '08172647212',
-                'email' => 'sulaimandjokodahlan76@gmail.com'
+                'email' => 'sulaimandjokodahlan76@gmail.com',
+                'status' => 'terima'
             ],
             [
                 'club_id' => 2,
@@ -37,7 +38,8 @@ class OfficialSeeder extends Seeder
                 'social_media' => 'https://www.instagram.com/pssi',
                 'birthDate' => '1987-12-18',
                 'phone' => '08237474832',
-                'email' => 'solikinnurmanabdi76@gmail.com'
+                'email' => 'solikinnurmanabdi76@gmail.com',
+                'status' => 'terima'
             ]
         ];
 

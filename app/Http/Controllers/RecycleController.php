@@ -80,7 +80,7 @@ class RecycleController extends Controller
 
         Player::where('age_group_id', $age->id)->update(['age_group_id' => null]);
 
-        DetailZone::where('age_group_id', $age->id)->update(['age_group_id' => null]);
+        DetailZone::where('age_group_id', $age->id)->delete();
 
         AgeGroup::whereId($request->data)->onlyTrashed()->forceDelete();
 

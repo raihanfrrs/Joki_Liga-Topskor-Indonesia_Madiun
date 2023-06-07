@@ -17,8 +17,8 @@ class CreateOfficialsTable extends Migration
     {
         Schema::create('officials', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Club::class);
-            $table->foreignIdFor(Zone::class);
+            $table->foreignIdFor(Club::class)->nullable();
+            $table->foreignIdFor(Zone::class)->nullable();
             $table->string('name');
             $table->string('slug');
             $table->string('position');
@@ -28,6 +28,8 @@ class CreateOfficialsTable extends Migration
             $table->date('birthDate');
             $table->string('phone');
             $table->string('email');
+            $table->enum('status', ['terima', 'proses', 'tolak']);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

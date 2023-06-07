@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Zone;
 use App\Models\Player;
 use App\Models\DetailZone;
+use App\Models\Official;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
@@ -288,6 +289,40 @@ class MasterController extends Controller
             return view('admin.master.player.form-action', compact('model'))->render();
         })
         ->rawColumns(['club', 'age', 'zone', 'validator','action'])
+        ->make(true);
+    }
+
+    public function official_index()
+    {
+        return view('admin.master.official.index')->with([
+            'title' => 'Data Master',
+            'subtitle' => 'Official'
+        ]);
+    }
+
+    public function official_status_update(Request $request)
+    {
+        Official::where('slug', $request->official)->update(['status' => $request->status]);
+
+        return true;
+    }
+
+    public function dataOfficials()
+    {
+        return DataTables::of(Official::all())
+        ->addColumn('club', function ($model) {
+            return view('admin.master.official.data-club', compact('model'))->render();
+        })
+        ->addColumn('zone', function ($model) {
+            return view('admin.master.official.data-zone', compact('model'))->render();
+        })
+        ->addColumn('validator', function ($model) {
+            return view('admin.master.official.data-validator', compact('model'))->render();
+        })
+        ->addColumn('action', function ($model) {
+            return view('admin.master.official.form-action', compact('model'))->render();
+        })
+        ->rawColumns(['club', 'zone', 'validator','action'])
         ->make(true);
     }
 }

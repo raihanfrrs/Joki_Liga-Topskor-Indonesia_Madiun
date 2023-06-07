@@ -36,6 +36,25 @@ $(document).ready(function () {
         ]
     });
 
+    $('#dataOfficials').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '/dataOfficials',
+        columns: [
+            { data: 'id', name: 'id', class: 'text-muted text-center' },
+            { data: 'name', name: 'name', class: 'text-muted text-capitalize' },
+            { data: 'position', name: 'position', class: 'text-muted text-center' },
+            { data: 'club', name: 'club', class: 'text-muted text-center' },
+            { data: 'email', name: 'email', class: 'text-muted text-center' },
+            { data: 'phone', name: 'phone', class: 'text-muted text-center' },
+            { data: 'zone', name: 'zone', class: 'text-muted text-center' },
+            { data: 'licence', name: 'licence', class: 'text-muted text-center' },
+            { data: 'birthDate', name: 'birthDate', class: 'text-muted text-center' },
+            { data: 'validator', name: 'validator', class: 'text-muted text-center' },
+            { data: 'action', name: 'action', class: 'text-center' }
+        ]
+    });
+
     $('#dataAgeGroups').DataTable({
         processing: true,
         serverSide: true,

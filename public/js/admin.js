@@ -59,6 +59,7 @@ $(document).ready(function () {
             "slug": slugPlayer
         },
         success: function(data){
+            console.log(data);
             $("#age-group-data").html(data);
         }
     });
@@ -181,6 +182,37 @@ $(document).on('change', '#statusPlayer', function () {
         url: "/player/status/update",
         data: {
             "player": player,
+            "status": status
+        },
+        success: function(data){
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Status Updated!',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            location.reload();
+        }
+    });
+});
+
+$(document).on('change', '#statusOfficial', function () {
+    let selectedOption = $(this).find('option:selected');
+    let status = selectedOption.val();
+    let official = $(this).data('key');
+
+    $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr("content")
+        }
+    });
+
+    $.ajax({
+        type: "get",
+        url: "/official/status/update",
+        data: {
+            "official": official,
             "status": status
         },
         success: function(data){
