@@ -18,9 +18,8 @@
                                 <th>Club</th>
                                 <th>Email</th>
                                 <th>Phone</th>
-                                <th>Zone</th>
                                 <th>Licence</th>
-                                <th>Date of Birth</th>
+                                <th>Place & Date of Birth</th>
                                 <th>Validator</th>
                                 <th>Action</th>
                             </tr>

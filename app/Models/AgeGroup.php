@@ -14,11 +14,6 @@ class AgeGroup extends Model
         'id'
     ];
 
-    public function detail_zone()
-    {
-        return $this->hasMany(DetailZone::class);
-    }
-
     public function player()
     {
         return $this->hasMany(Player::class);

@@ -17,7 +17,6 @@ class PlayerSeeder extends Seeder
         $players = [
             [
                 'club_id' => 1,
-                'zone_id' => 1,
                 'age_group_id' => 1,
                 'name' => 'Angga Putra Laksono',
                 'slug' => 'angga-putra-laksono',
@@ -32,7 +31,6 @@ class PlayerSeeder extends Seeder
             ],
             [
                 'club_id' => 2,
-                'zone_id' => 2,
                 'age_group_id' => 2,
                 'name' => 'Fitroni Haikal Firmansyah',
                 'slug' => 'fitroni-haikal-firmansyah',

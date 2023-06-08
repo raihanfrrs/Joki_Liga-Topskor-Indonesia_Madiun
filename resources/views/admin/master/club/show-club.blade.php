@@ -27,7 +27,7 @@
                                 <p>Club Manager: <span class="item fw-bold text-capitalize">{{ $club->club_manager }}</span></p>
                                 <p>Number of Players: <span class="item fw-bold"> {{ $club->player()->withTrashed()->count() }} </span> </p>
                                 <p>Phone: <span class="item fw-bold"> {{ $club->phone }} </span> </p>
-                                <p>Zone: <span class="item fw-bold text-capitalize">{{ $club->zone()->withTrashed()->first()->zone ? $club->zone()->withTrashed()->first()->zone : "Haven't selected a zone yet" }}</span></p>
+                                <p>Zone: <span class="item fw-bold text-capitalize">{{ $club->zone }}</span></p>
                                 <p>Social Media: <span class="item fw-bold"><a href="{{ $club->social_media }}" target="_blank">{{ $club->social_media }}</a></span></p>
                                 <p>Address: <span class="item fw-bold">{{ $club->address }}</span></p>
                             </div>

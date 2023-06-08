@@ -19,7 +19,6 @@
                                 <th>Address</th>
                                 <th>Phone</th>
                                 <th>Manager</th>
-                                <th>Zone</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

@@ -33,11 +33,6 @@ class Club extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function zone()
-    {
-        return $this->belongsTo(Zone::class);
-    }
-
     public function official()
     {
         return $this->hasMany(Official::class);

@@ -19,9 +19,7 @@
                                 <th>NIK</th>
                                 <th>NISN</th>
                                 <th>Phone</th>
-                                <th>Place of Birth</th>
-                                <th>Date of Birth</th>
-                                <th>Zone</th>
+                                <th>Place & Date of Birth</th>
                                 <th>Address</th>
                                 <th>Position</th>
                                 <th>Validator</th>

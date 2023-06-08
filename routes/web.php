@@ -84,7 +84,10 @@ Route::middleware('auth')->group(function () {
             Route::get('/dataPlayers', [MasterController::class, 'dataPlayers'])->name('dataPlayers');
 
             Route::get('official', 'official_index');
+            Route::get('official/{official}/edit', 'official_edit');
+            Route::put('official/{official}', 'official_update');
             Route::get('official/status/update', 'official_status_update');
+            Route::get('official/{official}/details', 'official_show');
             Route::get('/dataOfficials', [MasterController::class, 'dataOfficials'])->name('dataOfficials');
         });
 
@@ -97,15 +100,6 @@ Route::middleware('auth')->group(function () {
             Route::get('age/{age}/details', 'age_show');
             Route::delete('age/{age}', 'age_destroy');
             Route::get('/dataAgeGroups', [ManagementController::class, 'dataAgeGroups'])->name('dataAgeGroups');
-
-            Route::get('zone', 'zone_index');
-            Route::get('zone/add', 'zone_add');
-            Route::post('zone', 'zone_store');
-            Route::get('zone/{zone}/edit', 'zone_edit');
-            Route::put('zone/{zone}', 'zone_update');
-            Route::get('zone/{zone}/details', 'zone_show');
-            Route::delete('zone/{zone}', 'zone_destroy');
-            Route::get('/dataZones', [ManagementController::class, 'dataZones'])->name('dataZones');
         });
     });
 

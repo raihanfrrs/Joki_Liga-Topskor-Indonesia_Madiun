@@ -20,7 +20,6 @@
     </a>
     <ul aria-expanded="false">
         <li><a href="/age">Age Group</a></li>
-        <li><a href="/zone">Zone</a></li>
     </ul>
     </li>
 

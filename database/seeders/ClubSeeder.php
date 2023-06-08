@@ -23,7 +23,6 @@ class ClubSeeder extends Seeder
                 'social_media' => 'https://www.instagram.com/pssi',
                 'club_manager' => 'Hj. Sulaiman Djoko Dahlan S.Si',
                 'status' => 'active',
-                'zone_id' => 1,
                 'user_id' => 2
             ],
             [
@@ -34,7 +33,6 @@ class ClubSeeder extends Seeder
                 'social_media' => 'https://www.instagram.com/pssi',
                 'club_manager' => 'Ir. Solikin Nurman Abdi S.Ki',
                 'status' => 'active',
-                'zone_id' => 2,
                 'user_id' => 3
             ]
         ];

@@ -61,20 +61,6 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label class="col-lg-4 col-form-label" for="zone">Zone
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    <div class="col-lg-6">
-                                        <select class="default-select wide form-control text-capitalize" id="zone" name="zone_id">
-                                            <option data-display="Select">Please select</option>
-                                            @foreach ($zones as $zone)
-                                            <option value="{{ $zone->id }}" {{ $club->zone_id == $zone->id ? 'selected' : '' }}>{{ $zone->zone }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('zone_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
                                     <label class="col-lg-4 col-form-label" for="photo">Club Photo
                                         <span class="text-danger">*</span>
                                     </label>

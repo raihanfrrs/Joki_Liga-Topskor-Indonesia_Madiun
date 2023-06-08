@@ -106,7 +106,14 @@
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <div id="age-group-data" data-id="{{ $player->slug }}"></div>
+                                        @foreach ($ages as $age)
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input me-0" type="radio" name="age_group_id" value="{{ $age->id }}" {{ $player->age_group_id == $age->id ? 'checked' : '' }}>
+                                            <label class="form-check-label">
+                                                {{ $age->age }}
+                                            </label>
+                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                                 <div class="mb-3 row">

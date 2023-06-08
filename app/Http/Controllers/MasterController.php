@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AgeGroup;
 use Carbon\Carbon;
 use App\Models\Club;
 use App\Models\User;
-use App\Models\Zone;
 use App\Models\Player;
-use App\Models\DetailZone;
 use App\Models\Official;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -71,8 +70,7 @@ class MasterController extends Controller
         return view('admin.master.club.edit-club')->with([
             'title' => 'Master Data',
             'subtitle' => 'Club',
-            'club' => $club,
-            'zones' => Zone::all()
+            'club' => $club
         ]);
     }
 
@@ -84,7 +82,6 @@ class MasterController extends Controller
             'address' => 'required',
             'social_media' => 'required',
             'club_manager' => 'required',
-            'zone_id' => 'required',
             'logo' => 'image|file|max:2048',
         ];
 
@@ -144,13 +141,10 @@ class MasterController extends Controller
     public function dataClubs()
     {
         return DataTables::of(Club::whereNotNull('slug')->get())
-        ->addColumn('zone', function ($model) {
-            return view('admin.master.club.data-zone', compact('model'))->render();
-        })
         ->addColumn('action', function ($model) {
             return view('admin.master.club.form-action', compact('model'))->render();
         })
-        ->rawColumns(['zone', 'action'])
+        ->rawColumns(['action'])
         ->make(true);
     }
 
@@ -167,7 +161,8 @@ class MasterController extends Controller
             'title' => 'Master Data',
             'subtitle' => 'Player',
             'player' => $player,
-            'clubs' => Club::all()
+            'clubs' => Club::all(),
+            'ages' => AgeGroup::all()
         ]);
     }
 
@@ -199,7 +194,7 @@ class MasterController extends Controller
             if ($player->photo) {
                 Storage::delete($player->photo);
             }
-            $validateData['photo'] = $request->file('photo')->store('profile-image');
+            $validateData['photo'] = $request->file('photo')->store('player-image');
         }
 
         $validateData['slug'] = slug($request->name);
@@ -237,16 +232,6 @@ class MasterController extends Controller
         return true;
     }
 
-    public function player_read(Request $request)
-    {
-        $club = Club::whereId($request->club)->first();
-
-        return view('admin.master.player.data-age-group')->with([
-            'ages' => DetailZone::where('zone_id', $club->zone_id)->get(),
-            'player' => Player::where('slug', $request->slug)->first()
-        ]);
-    }
-
     public function player_show(Player $player)
     {
         return view('admin.master.player.show-player')->with([
@@ -279,8 +264,8 @@ class MasterController extends Controller
         ->addColumn('age', function ($model) {
             return view('admin.master.player.data-age', compact('model'))->render();
         })
-        ->addColumn('zone', function ($model) {
-            return view('admin.master.player.data-zone', compact('model'))->render();
+        ->addColumn('birthPlaceDate', function ($model) {
+            return view('admin.master.player.data-place-date-birth', compact('model'))->render();
         })
         ->addColumn('validator', function ($model) {
             return view('admin.master.player.data-validator', compact('model'))->render();
@@ -288,7 +273,7 @@ class MasterController extends Controller
         ->addColumn('action', function ($model) {
             return view('admin.master.player.form-action', compact('model'))->render();
         })
-        ->rawColumns(['club', 'age', 'zone', 'validator','action'])
+        ->rawColumns(['club', 'age', 'birthPlaceDate','validator','action'])
         ->make(true);
     }
 
@@ -300,11 +285,82 @@ class MasterController extends Controller
         ]);
     }
 
+    public function official_edit(Official $official)
+    {
+        return view('admin.master.official.edit-official')->with([
+            'title' => 'Data Master',
+            'subtitle' => 'Official',
+            'official' => $official,
+            'clubs' => Club::all()
+        ]);
+    }
+
+    public function official_update(Request $request, Official $official)
+    {
+
+        $rules = [
+            'name' => 'required|min:2|max:255',
+            'birthPlace' => 'required|min:2|max:255|alpha',
+            'birthDate' => 'required',
+            'phone' => 'required|min:2|numeric',
+            'email' => 'required|min:5|max:255|email:rfc,dns',
+            'social_media' => 'required|min:2|max:255',
+            'position' => 'required',
+            'club_id' => 'required',
+            'photo' => 'image|file|max:2048',
+        ];
+
+        $validateData = $request->validate($rules);
+
+        if ($request->file('photo')) {
+            if ($official->photo) {
+                Storage::delete($official->photo);
+            }
+            $validateData['photo'] = $request->file('photo')->store('official-image');
+        }
+
+        $validateData['slug'] = slug($request->name);
+
+        if ($request->birthDate != $official->birthDate) {
+            $date = Carbon::createFromFormat('j F, Y', $request->birthDate);
+            $formattedDate = $date->format('Y-m-d');
+
+            $validateData['birthDate'] = $formattedDate;
+        }
+
+        $officials = Official::whereId($official->id)->update($validateData);
+
+        if ($officials) {
+            return redirect('official')->with([
+                'case' => 'default',
+                'position' => 'center',
+                'type' => 'success',
+                'message' => 'Update Success!'
+            ]);
+        } else {
+            return redirect('official')->with([
+                'case' => 'default',
+                'position' => 'center',
+                'type' => 'error',
+                'message' => 'Update Failed!'
+            ]);
+        }
+    }
+
     public function official_status_update(Request $request)
     {
         Official::where('slug', $request->official)->update(['status' => $request->status]);
 
         return true;
+    }
+
+    public function official_show(Official $official)
+    {
+        return view('admin.master.official.show-official')->with([
+            'title' => 'Data Master',
+            'subtitle' => 'Official',
+            'official' => $official
+        ]);
     }
 
     public function dataOfficials()
@@ -313,8 +369,8 @@ class MasterController extends Controller
         ->addColumn('club', function ($model) {
             return view('admin.master.official.data-club', compact('model'))->render();
         })
-        ->addColumn('zone', function ($model) {
-            return view('admin.master.official.data-zone', compact('model'))->render();
+        ->addColumn('birthPlaceDate', function ($model) {
+            return view('admin.master.official.data-place-date-birth', compact('model'))->render();
         })
         ->addColumn('validator', function ($model) {
             return view('admin.master.official.data-validator', compact('model'))->render();
