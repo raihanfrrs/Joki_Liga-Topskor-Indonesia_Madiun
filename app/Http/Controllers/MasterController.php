@@ -363,6 +363,20 @@ class MasterController extends Controller
         ]);
     }
 
+    public function official_destroy(Official $official)
+    {
+        if ($official->deleted_at == null) {
+            $official->delete();
+        } 
+
+        return redirect('official')->with([
+            'case' => 'default',
+            'position' => 'center',
+            'type' => 'success',
+            'message' => 'Move To Trash Success!'
+        ]);
+    }
+
     public function dataOfficials()
     {
         return DataTables::of(Official::all())

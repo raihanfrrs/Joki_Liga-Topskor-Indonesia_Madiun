@@ -41,13 +41,13 @@ Route::middleware('auth')->group(function () {
         Route::get('bin', 'index');
         Route::get('bin/club/restore', 'club_restore');
         Route::get('bin/player/restore', 'player_restore');
+        Route::get('bin/official/restore', 'official_restore');
         Route::get('bin/age/restore', 'age_restore');
-        Route::get('bin/zone/restore', 'zone_restore');
 
         Route::get('bin/club/destroy', 'club_destroy');
         Route::get('bin/player/destroy', 'player_destroy');
+        Route::get('bin/official/destroy', 'official_destroy');
         Route::get('bin/age/destroy', 'age_destroy');
-        Route::get('bin/zone/destroy', 'zone_destroy');
     });
 
     Route::controller(ProfileController::class)->group(function () {
@@ -88,6 +88,7 @@ Route::middleware('auth')->group(function () {
             Route::put('official/{official}', 'official_update');
             Route::get('official/status/update', 'official_status_update');
             Route::get('official/{official}/details', 'official_show');
+            Route::delete('official/{official}', 'official_destroy');
             Route::get('/dataOfficials', [MasterController::class, 'dataOfficials'])->name('dataOfficials');
         });
 

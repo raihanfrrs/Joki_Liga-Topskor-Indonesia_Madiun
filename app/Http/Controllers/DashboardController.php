@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\AgeGroup;
 use App\Models\Club;
+use App\Models\Official;
 use App\Models\Player;
-use App\Models\Zone;
 
 class DashboardController extends Controller
 {
@@ -24,14 +24,9 @@ class DashboardController extends Controller
         return AgeGroup::withTrashed()->count();
     }
 
-    public function totalZones()
-    {
-        return Zone::withTrashed()->count();
-    }
-
     public function totalTrashed()
     {
-        $count = AgeGroup::onlyTrashed()->count() + Zone::onlyTrashed()->count() + Club::onlyTrashed()->count() + Player::onlyTrashed()->count();
+        $count = AgeGroup::onlyTrashed()->count() + Club::onlyTrashed()->count() + Player::onlyTrashed()->count() + Official::onlyTrashed()->count();
 
         return $count;
     }
