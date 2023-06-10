@@ -45,7 +45,7 @@
                                         <p>Club: </p>
                                     </div>
                                     <div class="col-sm-10 col-6">
-                                        <span class="item fw-bold text-capitalize">{{ $official->club()->withTrashed()->first()->name }}</span>
+                                        <span class="item fw-bold text-capitalize">{{ $official->club_id ? $official->club()->withTrashed()->first()->name : "-" }}</span>
                                     </div>
                                 </div>
                                 <div class="row mb-2">

@@ -19,6 +19,11 @@ class DashboardController extends Controller
         return Player::withTrashed()->count();
     }
 
+    public function totalOfficials()
+    {
+        return Official::withTrashed()->count();
+    }
+
     public function totalAges()
     {
         return AgeGroup::withTrashed()->count();

@@ -47,8 +47,8 @@
                         
                     </div>
                     <div>
-                        <h2 class="text-white invoice-num"><span id="totalAges"></span></h2>
-                        <span class="text-white fs-18">Total Age Groups</span>
+                        <h2 class="text-white invoice-num"><span id="totalOfficials"></span></h2>
+                        <span class="text-white fs-18">Total Officials</span>
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                     </div>
                     <div>
                         <h2 class="text-white invoice-num"><span id="totalZones"></span></h2>
-                        <span class="text-white fs-18">Total Zones</span>
+                        <span class="text-white fs-18">Total Age Groups</span>
                     </div>
                 </div>
             </div>

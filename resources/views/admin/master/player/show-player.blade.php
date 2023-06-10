@@ -53,7 +53,7 @@
                                         <p>Club: </p>
                                     </div>
                                     <div class="col-sm-10 col-6">
-                                        <span class="item fw-bold text-capitalize">{{ $player->club()->withTrashed()->first()->name }}</span>
+                                        <span class="item fw-bold text-capitalize">{{ $player->club_id ? $player->club()->withTrashed()->first()->name : '-' }}</span>
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -61,7 +61,7 @@
                                         <p>Age Group: </p>
                                     </div>
                                     <div class="col-sm-10 col-6">
-                                        <span class="item fw-bold text-capitalize">{{ $player->age_group()->withTrashed()->first()->age }}</span>
+                                        <span class="item fw-bold text-capitalize">{{ $player->age_group_id ? $player->age_group()->withTrashed()->first()->age : '-' }}</span>
                                     </div>
                                 </div>
                                 <div class="row mb-2">

@@ -60,7 +60,7 @@ Route::middleware('auth')->group(function () {
             Route::get('dashboard/admin/totalClubs', 'totalClubs');
             Route::get('dashboard/admin/totalPlayers', 'totalPlayers');
             Route::get('dashboard/admin/totalAges', 'totalAges');
-            Route::get('dashboard/admin/totalZones', 'totalZones');
+            Route::get('dashboard/admin/totalOfficials', 'totalOfficials');
             Route::get('dashboard/admin/totalTrashed', 'totalTrashed');
         });
 

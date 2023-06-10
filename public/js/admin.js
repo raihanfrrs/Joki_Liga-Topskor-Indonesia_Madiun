@@ -23,17 +23,17 @@ $(document).ready(function () {
 
     $.ajax({
         type: "get",
-        url: "/dashboard/admin/totalAges",
+        url: "/dashboard/admin/totalOfficials",
         success: function(data){
-            $("#totalAges").html(data);
+            $("#totalOfficials").html(data);
         }
     });
 
     $.ajax({
         type: "get",
-        url: "/dashboard/admin/totalZones",
+        url: "/dashboard/admin/totalAges",
         success: function(data){
-            $("#totalZones").html(data);
+            $("#totalAges").html(data);
         }
     });
 
