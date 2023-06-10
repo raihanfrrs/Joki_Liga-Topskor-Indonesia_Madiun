@@ -144,7 +144,10 @@ class MasterController extends Controller
         ->addColumn('action', function ($model) {
             return view('admin.master.club.form-action', compact('model'))->render();
         })
-        ->rawColumns(['action'])
+        ->addColumn('option', function ($model) {
+            return view('admin.master.club.form-option', compact('model'))->render();
+        })
+        ->rawColumns(['action', 'option'])
         ->make(true);
     }
 

@@ -20,6 +20,7 @@
                                 <th>Phone</th>
                                 <th>Manager</th>
                                 <th>Action</th>
+                                <th>Option</th>
                             </tr>
                         </thead>
                     </table>

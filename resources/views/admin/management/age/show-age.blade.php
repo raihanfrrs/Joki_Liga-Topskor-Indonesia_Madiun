@@ -28,7 +28,7 @@
                         </div>
                         <div class="new-arrival-content text-center mt-3">
                             <h3 class="text-capitalize"><a href="/player/{{ $player->slug }}/details" target="_blank">{{ $player->name }}</a></h3>
-                            <span class="price">{{ $player->club()->withTrashed()->first()->name }}</span>
+                            <span class="price">{{ $player->club_id ? $player->club()->withTrashed()->first()->name : "Haven't selected a club yet" }}</span>
                         </div>
                     </div>
                 </div>

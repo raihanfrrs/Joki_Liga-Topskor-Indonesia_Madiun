@@ -9,7 +9,8 @@ $(document).ready(function () {
             { data: 'address', name: 'address', class: 'text-muted text-center' },
             { data: 'phone', name: 'phone', class: 'text-muted text-center' },
             { data: 'club_manager', name: 'club_manager', class: 'text-muted text-center' },
-            { data: 'action', name: 'action', class: 'text-center' }
+            { data: 'action', name: 'action', class: 'text-center' },
+            { data: 'option', name: 'option', class: 'text-center' }
         ]
     });
 

@@ -88,6 +88,20 @@
                                         <span class="item fw-bold">{{ $player->address }}</span>
                                     </div>
                                 </div>
+                                <div class="row mb-2">
+                                    <div class="col-sm-2 col-6">
+                                        <p>Status: </p>
+                                    </div>
+                                    <div class="col-sm-10 col-6">
+                                        @if ($player->status == 'terima')
+                                            <span class="badge badge-success light text-capitalize"> {{ $player->status }} </span>
+                                        @elseif ($player->status == 'proses')
+                                            <span class="badge badge-warning light text-capitalize"> {{ $player->status }} </span>
+                                        @elseif ($player->status == 'tolak')
+                                            <span class="badge badge-danger light text-capitalize"> {{ $player->status }} </span>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
