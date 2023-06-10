@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    $('#dataOfficialofClub').DataTable();
+
+    $('#dataPlayerofClub').DataTable();
+
     $('#dataClubs').DataTable({
         processing: true,
         serverSide: true,

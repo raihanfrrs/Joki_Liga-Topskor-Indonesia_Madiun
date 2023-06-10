@@ -81,6 +81,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/player/age-group-data', 'player_read');
             Route::get('player/{player}/details', 'player_show');
             Route::delete('player/{player}', 'player_destroy');
+            Route::get('player/{club}/all', 'player_all');
             Route::get('/dataPlayers', [MasterController::class, 'dataPlayers'])->name('dataPlayers');
 
             Route::get('official', 'official_index');
@@ -89,6 +90,7 @@ Route::middleware('auth')->group(function () {
             Route::get('official/status/update', 'official_status_update');
             Route::get('official/{official}/details', 'official_show');
             Route::delete('official/{official}', 'official_destroy');
+            Route::get('official/{club}/all', 'official_all');
             Route::get('/dataOfficials', [MasterController::class, 'dataOfficials'])->name('dataOfficials');
         });
 

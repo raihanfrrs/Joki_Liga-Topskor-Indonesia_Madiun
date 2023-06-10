@@ -258,6 +258,16 @@ class MasterController extends Controller
         ]);
     }
 
+    public function player_all(Club $club)
+    {
+        return view('admin.master.club.all-player')->with([
+            'title' => 'Data Master',
+            'subtitle' => 'Player of '.$club->name,
+            'club' => $club,
+            'players' => Player::where('club_id', $club->id)->get()
+        ]);
+    }
+
     public function dataPlayers()
     {
         return DataTables::of(Player::all())
@@ -377,6 +387,16 @@ class MasterController extends Controller
             'position' => 'center',
             'type' => 'success',
             'message' => 'Move To Trash Success!'
+        ]);
+    }
+
+    public function official_all(Club $club)
+    {
+        return view('admin.master.club.all-official')->with([
+            'title' => 'Data Master',
+            'subtitle' => 'Official of '.$club->name,
+            'club' => $club,
+            'officials' => Official::where('club_id', $club->id)->get()
         ]);
     }
 
