@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AgeGroup;
 use App\Models\Club;
-use App\Models\Official;
+use App\Models\Mail;
 use App\Models\Player;
+use App\Models\AgeGroup;
+use App\Models\Official;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class RecycleController extends Controller
 {
@@ -18,11 +20,14 @@ class RecycleController extends Controller
                 'clubs' => Club::onlyTrashed()->get(),
                 'players' => Player::onlyTrashed()->get(),
                 'ages' => AgeGroup::onlyTrashed()->get(),
-                'officials' => Official::onlyTrashed()->get()
+                'officials' => Official::onlyTrashed()->get(),
+                'mails' => Mail::onlyTrashed()->get(),
             ]);
         }elseif (auth()->user()->level === 'user') {
             return view('user.recycle.index')->with([
-                'title' => 'Recycle'
+                'title' => 'Recycle',
+                'officials' => Official::where('club_id', auth()->user()->club->id)->onlyTrashed()->get(),
+                'players' => Player::where('club_id', auth()->user()->club->id)->onlyTrashed()->get()
             ]);
         }
     }
@@ -37,6 +42,7 @@ class RecycleController extends Controller
     public function player_restore(Request $request)
     {
         Player::where('slug', $request->data)->onlyTrashed()->restore();
+        Player::where('slug', $request->data)->update(['status' => 'proses']);
 
         return true;
     }
@@ -44,6 +50,7 @@ class RecycleController extends Controller
     public function official_restore(Request $request)
     {
         Official::where('slug', $request->data)->onlyTrashed()->restore();
+        Official::where('slug', $request->data)->update(['status' => 'proses']);
 
         return true;
     }
@@ -51,6 +58,13 @@ class RecycleController extends Controller
     public function age_restore(Request $request)
     {
         AgeGroup::whereId($request->data)->onlyTrashed()->restore();
+
+        return true;
+    }
+
+    public function mail_restore(Request $request)
+    {
+        Mail::whereId($request->data)->onlyTrashed()->restore();
 
         return true;
     }
@@ -89,6 +103,19 @@ class RecycleController extends Controller
         Player::where('age_group_id', $age->id)->update(['age_group_id' => null]);
 
         AgeGroup::whereId($request->data)->onlyTrashed()->forceDelete();
+
+        return true;
+    }
+
+    public function mail_destroy(Request $request)
+    {
+        $mail = Mail::whereId($request->data)->onlyTrashed()->first();
+
+        if ($mail->file) {
+            Storage::delete($mail->file);
+        }
+
+        $mail->forceDelete();
 
         return true;
     }

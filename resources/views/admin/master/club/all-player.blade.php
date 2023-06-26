@@ -5,7 +5,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">All Official of {{ $club->name }}</h4>
+                <h4 class="card-title">All Player of {{ $club->name }}</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

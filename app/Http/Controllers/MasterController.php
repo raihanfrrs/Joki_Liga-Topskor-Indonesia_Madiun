@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AgeGroup;
 use Carbon\Carbon;
 use App\Models\Club;
+use App\Models\Mail;
 use App\Models\User;
 use App\Models\Player;
+use App\Models\AgeGroup;
 use App\Models\Official;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Validation\Rules\Password;
@@ -416,6 +418,162 @@ class MasterController extends Controller
             return view('admin.master.official.form-action', compact('model'))->render();
         })
         ->rawColumns(['club', 'zone', 'validator','action'])
+        ->make(true);
+    }
+
+    public function mail_index()
+    {
+        return view('admin.master.mail.index')->with([
+            'title' => 'Data Master',
+            'subtitle' => 'Mail'
+        ]);
+    }
+
+    public function mail_add()
+    {
+        return view('admin.master.mail.add-mail')->with([
+            'title' => 'Data Master',
+            'subtitle' => 'Mail'
+        ]);
+    }
+
+    public function mail_store(Request $request)
+    {
+        $rules = [
+            'name' => 'required|min:2|max:255'
+        ];
+
+        $validateData = $request->validate($rules);
+
+        if ($request->file('file')) {
+            $validateData['file'] = $request->file('file')->store('document');
+        }
+
+        $validateData['admin_id'] = auth()->user()->id;
+        $validateData['status'] = 'active';
+
+        $mail = Mail::create($validateData);
+
+        if ($mail) {
+            return redirect('mail/add')->with([
+                'case' => 'default',
+                'position' => 'center',
+                'type' => 'success',
+                'message' => 'Adding Success!'
+            ]);
+        } else {
+            return redirect('mail/add')->with([
+                'case' => 'default',
+                'position' => 'center',
+                'type' => 'success',
+                'message' => 'Adding Failed!'
+            ]);
+        }
+    }
+
+    public function mail_edit(Mail $mail)
+    {
+        return view('admin.master.mail.edit-mail')->with([
+            'title' => 'Data Master',
+            'subtitle' => 'Mail',
+            'mail' => $mail
+        ]);
+    }
+
+    public function mail_update(Request $request, Mail $mail)
+    {
+        $rules = [
+            'name' => 'required|min:2|max:255'
+        ];
+
+        $validateData = $request->validate($rules);
+
+        if ($request->file('file')) {
+            if ($mail->file) {
+                Storage::delete($mail->file);
+            }
+
+            $validateData['file'] = $request->file('file')->store('document');
+        }
+
+        $validateData['admin_id'] = auth()->user()->id;
+
+        $mail = Mail::whereId($mail->id)->update($validateData);
+
+        if ($mail) {
+            return redirect('mail')->with([
+                'case' => 'default',
+                'position' => 'center',
+                'type' => 'success',
+                'message' => 'Update Success!'
+            ]);
+        } else {
+            return redirect('mail')->with([
+                'case' => 'default',
+                'position' => 'center',
+                'type' => 'success',
+                'message' => 'Update Failed!'
+            ]);
+        }
+    }
+
+    public function mail_status_update(Request $request)
+    {
+        Mail::whereId($request->mail)->update(['status' => $request->status]);
+
+        return true;
+    }
+
+    public function mail_destroy(Mail $mail)
+    {
+        if ($mail->deleted_at == null) {
+            $mail->delete();
+        } 
+
+        return redirect('mail')->with([
+            'case' => 'default',
+            'position' => 'center',
+            'type' => 'success',
+            'message' => 'Move To Trash Success!'
+        ]);
+    }
+
+    public function mail_show(Mail $mail)
+    {
+        return view('admin.master.mail.show-mail')->with([
+            'title' => 'Data Master',
+            'subtitle' => 'Mail',
+            'mail' => $mail
+        ]);
+    }
+
+    public function mail_download(Mail $mail)
+    {
+        $pathToFile = public_path("storage/{$mail->file}");
+        $extension = pathinfo($mail->file, PATHINFO_EXTENSION);
+
+        return Response::download($pathToFile, $mail->name.".".$extension);
+    }
+
+    public function dataMails()
+    {
+        return DataTables::of(Mail::all())
+        ->addColumn('admin', function ($model) {
+            return view('admin.master.mail.data-admin', compact('model'))->render();
+        })
+        ->addColumn('created_at', function ($model) {
+            return view('admin.master.mail.data-created', compact('model'))->render();
+        })
+        ->addColumn('updated_at', function ($model) {
+            return view('admin.master.mail.data-updated', compact('model'))->render();
+        })
+        ->addColumn('validator', function ($model) {
+            return view('admin.master.mail.data-validator', compact('model'))->render();
+        })
+        ->addColumn('action', function ($model) {
+            return view('admin.master.mail.form-action', compact('model'))->render();
+        })
+        ->rawColumns(['validator', 'action'])
         ->make(true);
     }
 }

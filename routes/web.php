@@ -1,12 +1,16 @@
 <?php
 
+use App\Http\Controllers\ClubController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\MasterController;
+use App\Http\Controllers\OfficialController;
+use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecycleController;
 
@@ -43,11 +47,13 @@ Route::middleware('auth')->group(function () {
         Route::get('bin/player/restore', 'player_restore');
         Route::get('bin/official/restore', 'official_restore');
         Route::get('bin/age/restore', 'age_restore');
+        Route::get('bin/mail/restore', 'mail_restore');
 
         Route::get('bin/club/destroy', 'club_destroy');
         Route::get('bin/player/destroy', 'player_destroy');
         Route::get('bin/official/destroy', 'official_destroy');
         Route::get('bin/age/destroy', 'age_destroy');
+        Route::get('bin/mail/destroy', 'mail_destroy');
     });
 
     Route::controller(ProfileController::class)->group(function () {
@@ -92,6 +98,17 @@ Route::middleware('auth')->group(function () {
             Route::delete('official/{official}', 'official_destroy');
             Route::get('official/{club}/all', 'official_all');
             Route::get('/dataOfficials', [MasterController::class, 'dataOfficials'])->name('dataOfficials');
+
+            Route::get('mail', 'mail_index');
+            Route::get('mail/add', 'mail_add');
+            Route::post('mail', 'mail_store');
+            Route::get('mail/{mail}/edit', 'mail_edit');
+            Route::put('mail/{mail}', 'mail_update');
+            Route::get('mail/status/update', 'mail_status_update');
+            Route::delete('mail/{mail}', 'mail_destroy');
+            Route::get('mail/{mail}/details', 'mail_show');
+            Route::get('mail/{mail}/download', 'mail_download');
+            Route::get('/dataMails', [MasterController::class, 'dataMails'])->name('dataMails');
         });
 
         Route::controller(ManagementController::class)->group(function () {
@@ -107,6 +124,44 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::group(['middleware' => ['cekUserLogin:user']], function(){
+        Route::controller(DashboardController::class)->group(function () {
+            Route::get('dashboard/user/totalTrashedClub', 'totalTrashedClub');
+            Route::get('dashboard/user/totalPlayers', 'totalPlayers');
+            Route::get('dashboard/user/totalOfficials', 'totalOfficials');
+            Route::get('dashboard/user/totalMails', 'totalMails');
+            Route::get('dashboard/user/listMail', 'listMail');
+        });
 
+        Route::controller(ClubController::class)->group(function () {
+            Route::get('club-data', 'index');
+            Route::get('club-data/{club}/edit', 'edit');
+            Route::put('club-data/{club}', 'update');
+        });
+
+        Route::controller(OfficialController::class)->group(function () {
+            Route::get('official-data', 'index');
+            Route::get('official-data/add', 'create');
+            Route::post('official-data', 'store');
+            Route::get('official-data/{official}/edit', 'edit');
+            Route::put('official-data/{official}', 'update');
+            Route::get('official-data/{official}/details', 'show');
+            Route::delete('official-data/{official}', 'destroy');
+            Route::get('/dataClubOfficials', [OfficialController::class, 'dataClubOfficials'])->name('dataClubOfficials');
+        });
+
+        Route::controller(PlayerController::class)->group(function () {
+            Route::get('player-data', 'index');
+            Route::get('player-data/add', 'create');
+            Route::post('player-data', 'store');
+            Route::get('player-data/{player}/edit', 'edit');
+            Route::put('player-data/{player}', 'update');
+            Route::get('player-data/{player}/details', 'show');
+            Route::delete('player-data/{player}', 'destroy');
+            Route::get('/dataClubPlayers', [PlayerController::class, 'dataClubPlayers'])->name('dataClubPlayers');
+        });
+
+        Route::controller(MailController::class)->group(function () {
+            Route::get('mail-data/{mail}/download', 'download');
+        });
     });
 });

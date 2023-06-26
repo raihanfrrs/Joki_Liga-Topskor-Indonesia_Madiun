@@ -64,6 +64,31 @@ class ProfileController extends Controller
                 'type' => 'success',
                 'message' => 'Update Success!'
             ]);
+        } elseif ($user->level === 'user') {
+            if ($request->username != $user->username) {
+                $users = $request->validate([
+                    'username' => 'required|min:5|max:255'
+                ]);
+
+                User::whereId($user->id)->update($users);
+            }
+
+            if ($request->password) {
+                $users = $request->validate([
+                    'password' => [Password::min(8)]
+                ]);
+                
+                $users['password'] = bcrypt($request->password);
+
+                User::whereId($user->id)->update($users);
+            }
+
+            return redirect('profile')->with([
+                'case' => 'default',
+                'position' => 'center',
+                'type' => 'success',
+                'message' => 'Update Success!'
+            ]);
         }
     }
 }

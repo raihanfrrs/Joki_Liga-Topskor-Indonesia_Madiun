@@ -1,0 +1,1 @@
+{{ \Carbon\Carbon::parse($model->updated_at)->format('d/m/Y') }}

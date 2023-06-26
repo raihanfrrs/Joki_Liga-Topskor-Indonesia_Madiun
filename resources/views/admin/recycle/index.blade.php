@@ -2,7 +2,7 @@
 
 @section('section')
 <div class="row" id="row-bin">
-    @if ($clubs->count() == 0 && $players->count() == 0 && $ages->count() == 0 && $officials->count() == 0)
+    @if ($clubs->count() == 0 && $players->count() == 0 && $ages->count() == 0 && $officials->count() == 0 && $mails->count() == 0)
     <div class="col-xl-12">
         <div class="alert alert-warning solid">
             <div class="media">
@@ -167,6 +167,44 @@
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <button class="dropdown-item" id="restore" data-id="{{ $age->id }}" data-key="age">Restore</button>
                                         <button class="dropdown-item" id="delete" data-id="{{ $age->id }}" data-key="age">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+
+    @if ($mails->count() > 0)
+    <div class="col-xl-4 col-xxl-6 col-lg-6">
+        <div class="card">
+            <div class="card-header  border-0 pb-0">
+                <h4 class="card-title">Mails</h4>
+            </div>
+            <div class="card-body"> 
+                <div id="" class="widget-media dlab-scroll height370">
+                    <ul class="timeline">
+                        @foreach ($mails as $mail)
+                        <li>
+                            <div class="timeline-panel">
+                                <div class="media me-2 media-secondary">
+                                    {{ $loop->iteration }}
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="mb-1">{{ $mail->name }}</h5>
+                                    <small class="d-block">Moved at {{ $mail->deleted_at->diffForHumans() }}</small>
+                                </div>
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-secondary light sharp" data-bs-toggle="dropdown">
+                                        <svg width="18px" height="18px" viewbox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <button class="dropdown-item" id="restore" data-id="{{ $mail->id }}" data-key="mail">Restore</button>
+                                        <button class="dropdown-item" id="delete" data-id="{{ $mail->id }}" data-key="mail">Delete</button>
                                     </div>
                                 </div>
                             </div>

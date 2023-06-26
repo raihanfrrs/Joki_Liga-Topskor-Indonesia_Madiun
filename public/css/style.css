@@ -13978,7 +13978,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     white-space: nowrap;
     overflow: hidden;
     display: block;
-    max-width: 170px; }
+    max-width: 250px; }
     [data-theme-version="dark"] .chatbox .user_info span {
       color: #fff; }
   .chatbox .user_info p {

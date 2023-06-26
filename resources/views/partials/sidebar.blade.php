@@ -18,7 +18,7 @@
                     @endif
                     <div class="header-info ms-3">
                         <span class="font-w600 text-capitalize">Hi, <b>{{ auth()->user()->level }}</b></span>
-                        <small class="text-end font-w400 text-capitalize">{{ auth()->user()->level === 'admin' ? auth()->user()->admin->name : auth()->user()->club->name }}</small>
+                        <small class="text-end font-w400 text-capitalize">{{ auth()->user()->level === 'admin' ? auth()->user()->admin->name : (auth()->user()->club->name == '' ? auth()->user()->username : auth()->user()->club->name) }}</small>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">

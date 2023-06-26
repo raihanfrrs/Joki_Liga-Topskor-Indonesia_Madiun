@@ -51,6 +51,8 @@
     <div id="main-wrapper">
         @include('partials.logo')
 
+        @include('partials.chatbox')
+
         @include('partials.navbar')
 
         @include('partials.sidebar')
@@ -85,7 +87,7 @@
         @if (auth()->user()->level === 'admin')
         <script src="{{ asset('/') }}js/admin.js"></script>
         @elseif (auth()->user()->level === 'user')
-        <script src="{{ asset('/') }}js/dashboard/user.js"></script>
+        <script src="{{ asset('/') }}js/user.js"></script>
         @endif
     @endauth
 
@@ -93,5 +95,7 @@
     <script src="{{ asset('/') }}js/custom.min.js"></script>
 	<script src="{{ asset('/') }}js/dlabnav-init.js"></script>
 	<script src="{{ asset('/') }}js/pre-image.js"></script>
+	<script src="{{ asset('/') }}js/pre-iframe.js"></script>
+	<script src="{{ asset('/') }}js/button-custom.js"></script>
 </body>
 </html>
