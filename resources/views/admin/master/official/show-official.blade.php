@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="row mb-2">
                                     <div class="col-sm-2 col-6">
-                                        <p>Status: </p>
+                                        <p>Status:</p>
                                     </div>
                                     <div class="col-sm-10 col-6">
                                         @if ($official->status == 'terima')
