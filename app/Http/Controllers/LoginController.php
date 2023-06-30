@@ -33,26 +33,6 @@ class LoginController extends Controller
             ])->onlyInput('username');
         }
 
-        // if ($checkUser->count() > 0) {
-        //     if (Mahasiswa::where('user_id', $checkUser->id)->count() > 0) {
-        //         if ($checkUser->mahasiswa->status === 'deactivated') {
-        //             return back()->withErrors([
-        //                 'username' => 'Akun anda sedang dinonaktifkan oleh admin, silakan hubungi admin!',
-        //             ])->onlyInput('username');
-        //         }elseif($checkUser->mahasiswa->status === 'disapprove') {
-        //             return back()->withErrors([
-        //                 'username' => 'Akun anda belum disetujui oleh admin, silakan hubungi admin!',
-        //             ])->onlyInput('username');
-        //         }
-        //     }elseif (Dosen::where('user_id', $checkUser->id)->count() > 0) {
-        //         if ($checkUser->dosen->status === 'deactivated') {
-        //             return back()->withErrors([
-        //                 'username' => 'Akun anda sedang dinonaktifkan oleh admin, silakan hubungi admin!',
-        //             ])->onlyInput('username');
-        //         };
-        //     }
-        // }
-
         if(Auth::attempt($kredensial)){
             $request->session()->regenerate();
 
