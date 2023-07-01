@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Official;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
@@ -96,7 +97,14 @@ class OfficialController extends Controller
         ]);
     }
 
+    public function official_pdf()
+    {
+        $data = Official::where('club_id', auth()->user()->club->id)->withTrashed()->get();
+        $pdf = PDF::loadView('user.official.official-pdf', ['data'=>$data]);
+        $pdf->setPaper('A4', 'potrait');
 
+        return $pdf->stream('official.pdf');
+    }
 
     public function update(Request $request, Official $official)
     {

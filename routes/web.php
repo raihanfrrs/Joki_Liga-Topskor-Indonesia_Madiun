@@ -146,6 +146,7 @@ Route::middleware('auth')->group(function () {
             Route::put('official-data/{official}', 'update');
             Route::get('official-data/{official}/details', 'show');
             Route::delete('official-data/{official}', 'destroy');
+            Route::get('official-data/official-pdf', 'official_pdf');
             Route::get('/dataClubOfficials', [OfficialController::class, 'dataClubOfficials'])->name('dataClubOfficials');
         });
 
@@ -157,6 +158,7 @@ Route::middleware('auth')->group(function () {
             Route::put('player-data/{player}', 'update');
             Route::get('player-data/{player}/details', 'show');
             Route::delete('player-data/{player}', 'destroy');
+            Route::get('player-data/{player}/player-pdf', 'player_pdf');
             Route::get('/dataClubPlayers', [PlayerController::class, 'dataClubPlayers'])->name('dataClubPlayers');
         });
 

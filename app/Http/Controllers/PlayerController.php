@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Player;
 use App\Models\AgeGroup;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -15,7 +16,8 @@ class PlayerController extends Controller
     {
         return view('user.player.index')->with([
             'title' => 'Player',
-            'subtitle' => 'Data'
+            'subtitle' => 'Data',
+            'ages' => Player::select('age_group_id')->where('club_id', auth()->user()->club->id)->groupBy('age_group_id')->get()
         ]);
     }
 
@@ -205,6 +207,20 @@ class PlayerController extends Controller
             'type' => 'success',
             'message' => 'Move To Trash Success!'
         ]);
+    }
+
+    public function player_pdf($player)
+    {
+        if ($player == 'all') {
+            $data = Player::where('club_id', auth()->user()->club->id)->withTrashed()->get();
+        } else {
+            $data = Player::where('club_id', auth()->user()->club->id)->where('age_group_id', $player)->withTrashed()->get();
+        }
+
+        $pdf = PDF::loadView('user.player.player-pdf', ['data' => $data]);
+        $pdf->setPaper('A4', 'potrait');
+
+        return $pdf->stream('player.pdf');
     }
 
     public function dataClubPlayers()

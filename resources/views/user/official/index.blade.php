@@ -6,8 +6,12 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">All Data of Official</h4>
-                <a href="/official-data/add" class="btn btn-outline-primary btn-xs">Add Official <span class="btn-icon-end"><i class="fa fa-plus"></i></span>
-                </a>
+                <div class="d-flex">
+                    <a href="/official-data/official-pdf" class="btn btn-outline-info btn-xs me-2" target="_blank">Print Official <span class="btn-icon-end"><i class="fa fa-print"></i></span>
+                    </a>
+                    <a href="/official-data/add" class="btn btn-outline-primary btn-xs">Add Official <span class="btn-icon-end"><i class="fa fa-plus"></i></span>
+                    </a>
+                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
